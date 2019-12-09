@@ -29,13 +29,13 @@ public class CartDao {
      */
     public List<WowoCartItem> getCartItems(Integer userId)
     {
-        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItems(userId);
+        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItemsByUserId(userId);
         return wowoCartItemList;
     }
 
-    public List<WowoCartItem> getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
-        List<WowoCartItem> wowoCartItems = cartMapper.getCartItemsByUserIdAndProductId(userId, productId);
-        return wowoCartItems;
+    public WowoCartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
+        WowoCartItem wowoCartItem = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
+        return wowoCartItem;
     }
 
     public WowoCartItem addCartItem(WowoCartItem wowoCartItem){
@@ -50,7 +50,7 @@ public class CartDao {
      */
     public Object updateCartItem(WowoCartItem wowoCartItem){
         cartMapper.updateCartItemById(wowoCartItem);
-        return null;
+        return wowoCartItem;
     }
 
 
