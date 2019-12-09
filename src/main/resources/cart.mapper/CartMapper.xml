@@ -57,4 +57,8 @@
     values(#{userId}, #{productId}, #{isCheck}, #{number}, now(), #{gmtModified})
 </insert>
 
+<delete id="deleteCartItemById" parameterType="Integer">
+    delete from cart_item where id = #{id}
+</delete>
+
 </mapper>

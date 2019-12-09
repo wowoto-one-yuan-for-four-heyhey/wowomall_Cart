@@ -110,7 +110,7 @@ public class CartServiceImpl implements CartService {
         if(cartItem == null){
             return ResponseUtil.fail();
         }
-        Integer num = cartDao.deleteCartItemBy(cartItem.getId());
+        Integer num = cartDao.deleteCartItemById(cartItem.getId());
         if (!num.equals(1)) {
             return ResponseUtil.fail();
         }

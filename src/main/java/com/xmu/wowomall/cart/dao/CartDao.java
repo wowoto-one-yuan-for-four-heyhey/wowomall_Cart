@@ -63,9 +63,9 @@ public class CartDao {
      * @param cartId 购物车id
      * @return 订单列表
      */
-    public Integer deleteCartItemBy(Integer cartId){
+    public Integer deleteCartItemById(Integer cartId){
 
-        return cartMapper.deleteCartItem(cartId);
+        return cartMapper.deleteCartItemById(cartId);
     }
 
 
