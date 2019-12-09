@@ -3,9 +3,11 @@ package com.xmu.wowomall.cart.dao;
 
 import com.xmu.wowomall.cart.domain.WowoCartItem;
 import com.xmu.wowomall.cart.mapper.CartMapper;
+import com.xmu.wowomall.cart.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -27,12 +29,12 @@ public class CartDao {
      */
     public List<WowoCartItem> getCartItems(Integer userId)
     {
-        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItemsByUserId(userId);
+        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItems(userId);
         return wowoCartItemList;
     }
 
-    public WowoCartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
-        WowoCartItem wowoCartItems = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
+    public List<WowoCartItem> getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
+        List<WowoCartItem> wowoCartItems = cartMapper.getCartItemsByUserIdAndProductId(userId, productId);
         return wowoCartItems;
     }
 
@@ -50,4 +52,8 @@ public class CartDao {
         cartMapper.updateCartItemById(wowoCartItem);
         return null;
     }
+
+
+
+
 }

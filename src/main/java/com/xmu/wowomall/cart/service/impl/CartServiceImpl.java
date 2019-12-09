@@ -8,6 +8,7 @@ import com.xmu.wowomall.cart.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -88,11 +89,14 @@ public class CartServiceImpl implements CartService {
      */
     @Override
     public Object updateCartItem(Integer userId,Integer id,Integer goodsId,Integer productId,Integer number){
-        WowoCartItem wowoCartItem = new WowoCartItem();
-        wowoCartItem.setId(id);
-        wowoCartItem.setUserId(userId);
-        wowoCartItem.setProductId(productId);
-        wowoCartItem.setNumber(number);
-        return cartDao.updateCartItem(wowoCartItem);
+
+        WowoCartItem cartItem = cartDao.getCartItemById(id);
+        if(cartItem == null){
+            return ResponseUtil.fail();
+        }
+        cartItem.setNumber(number);
+        cartItem.setProductId(productId);
+        cartItem.setUserId(userId);
+        return cartDao.updateCartItem(cartItem);
     }
 }
