@@ -97,6 +97,24 @@ public class CartServiceImpl implements CartService {
         cartItem.setNumber(number);
         cartItem.setProductId(productId);
         cartItem.setUserId(userId);
-        return cartDao.updateCartItem(cartItem);
+        Integer num = cartDao.updateCartItem(cartItem);
+        if (num == 1){
+            return ResponseUtil.ok(num);
+        }
+        return ResponseUtil.fail();
+    }
+
+    @Override
+    public Object deleteCartItem(Integer userId,Integer productId){
+        WowoCartItem cartItem = cartDao.getCartItemsByUserIdAndProductId(userId,productId);
+        if(cartItem == null){
+            return ResponseUtil.fail();
+        }
+        Integer num = cartDao.deleteCartItemBy(cartItem.getId());
+        if (!num.equals(1)) {
+            return ResponseUtil.fail();
+        }
+
+        return ResponseUtil.ok();
     }
 }

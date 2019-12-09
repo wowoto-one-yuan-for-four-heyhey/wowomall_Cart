@@ -48,4 +48,5 @@ public interface CartService {
     public Object updateCartItem(Integer userId,Integer id,Integer goodsId,Integer productId,Integer number);
 
 
+    public Object deleteCartItem(Integer userId,Integer productId);
 }

@@ -29,4 +29,5 @@ public interface CartMapper {
     WowoCartItem getCartItemByUserIdAndProductId(Integer userId, Integer productId);
 
     Integer updateCartItemById(WowoCartItem wowoCartItem);
+    Integer deleteCartItem(Integer cartId);
 }

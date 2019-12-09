@@ -48,9 +48,19 @@ public class CartDao {
      * @param wowoCartItem 购物车项
      * @return 订单列表
      */
-    public Object updateCartItem(WowoCartItem wowoCartItem){
-        cartMapper.updateCartItemById(wowoCartItem);
-        return wowoCartItem;
+    public Integer updateCartItem(WowoCartItem wowoCartItem){
+        return cartMapper.updateCartItem(wowoCartItem);
+    }
+
+
+    /**
+     * 获取用户订单列表
+     * @param cartId 购物车id
+     * @return 订单列表
+     */
+    public Integer deleteCartItemBy(Integer cartId){
+
+        return cartMapper.deleteCartItem(cartId);
     }
 
 

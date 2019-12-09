@@ -134,6 +134,13 @@ public class CartController {
     @DeleteMapping("carts/{id}")
     @ApiOperation(value = "删除一个购物车项 /delete")
     public Object delete(Integer userId, @RequestBody String body){
-        return null;
+        if(null == userId) {
+            ResponseUtil.unlogin();
+        }
+        Integer productId = JacksonUtil.parseInteger(body, "productIds");
+        if(null == productId) {
+            ResponseUtil.badArgument();
+        }
+        return cartService.deleteCartItem(userId,productId);
     }
 }
