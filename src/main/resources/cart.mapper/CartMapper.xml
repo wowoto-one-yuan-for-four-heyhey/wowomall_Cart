@@ -26,6 +26,19 @@
     where user_id = #{userId} and product_id = #{productId}
 </select>
 
+<select id="getCartItemById" resultType="WowoCartItem">
+    select id,
+           user_id,
+           product_id,
+           is_check,
+           number,
+           gmt_create,
+           gmt_modified
+    from cart_item
+    where id = #{cartId}
+</select>
+
+
 <update id="updateCartItemById" parameterType="WowoCartItem">
     update cart_item
     <trim prefix="set" suffixOverrides=",">
