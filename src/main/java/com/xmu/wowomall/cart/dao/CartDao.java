@@ -27,13 +27,18 @@ public class CartDao {
      */
     public List<WowoCartItem> getCartItems(Integer userId)
     {
-        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItems(userId);
+        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItemsByUserId(userId);
         return wowoCartItemList;
     }
 
-    public List<WowoCartItem> getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
-        List<WowoCartItem> wowoCartItems = cartMapper.getCartItemsByUserIdAndProductId(userId, productId);
+    public WowoCartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
+        WowoCartItem wowoCartItems = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
         return wowoCartItems;
+    }
+
+    public WowoCartItem addCartItem(WowoCartItem wowoCartItem){
+        cartMapper.updateCartItemById(wowoCartItem);
+        return wowoCartItem;
     }
 
     /**
@@ -42,11 +47,7 @@ public class CartDao {
      * @return 订单列表
      */
     public Object updateCartItem(WowoCartItem wowoCartItem){
-        cartMapper.updateCartItem(wowoCartItem);
+        cartMapper.updateCartItemById(wowoCartItem);
         return null;
     }
-
-
-
-
 }

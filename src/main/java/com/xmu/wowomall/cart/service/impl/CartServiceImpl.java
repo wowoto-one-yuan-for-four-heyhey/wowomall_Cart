@@ -22,11 +22,8 @@ import java.util.Map;
 @Service
 public class CartServiceImpl implements CartService {
 
-
-
     @Autowired
     private CartDao cartDao;
-
 
     @Override
     public WowoCartItem findCartItemById(Integer id) {
@@ -40,7 +37,14 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Object addCartItem(WowoCartItem wowoCartItem){
-        return null;
+        WowoCartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(wowoCartItem.getUserId(), wowoCartItem.getProductId());
+        if(null != existCartItem) {
+            existCartItem.setNumber(existCartItem.getNumber() + wowoCartItem.getNumber());
+            cartDao.updateCartItem(existCartItem);
+            return existCartItem;
+        }
+        cartDao.addCartItem(wowoCartItem);
+        return wowoCartItem;
     }
 
     /**
@@ -54,12 +58,10 @@ public class CartServiceImpl implements CartService {
      *                 5已完成订单，
      *                 6退货订单，
      *                 7换货订单
-
      * @return 订单列表
      */
     @Override
     public Object getCarts(Integer userId){
-
         List<WowoCartItem> wowoCartItemList = cartDao.getCartItems(userId);
         List<Map<String, Object>> wowoCartsVoList = new ArrayList<>(wowoCartItemList.size());
         for(WowoCartItem oneCart:wowoCartItemList)

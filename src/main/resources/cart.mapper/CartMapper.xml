@@ -2,16 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xmu.wowomall.cart.mapper.CartMapper">
 
-<select id="getCartItems" parameterType="java.util.List" resultType="WowoCartItem">
-    select *
+<select id="getCartItemsByUserId" resultType="WowoCartItem">
+    select id,
+           user_id,
+           product_id,
+           is_check,
+           number,
+           gmt_create,
+           gmt_modified
     from cart_item
     where user_id = #{userId}
 </select>
 
-<select id="getCartItemsByUserIdAndProductId" parameterType="java.util.List" resultType="WowoCartItem">
-    select *
+<select id="getCartItemByUserIdAndProductId" resultType="WowoCartItem">
+    select id,
+           user_id,
+           product_id,
+           is_check,
+           number,
+           gmt_create,
+           gmt_modified
     from cart_item
     where user_id = #{userId} and product_id = #{productId}
 </select>
+
+<update id="updateCartItemById" parameterType="WowoCartItem">
+    update cart_item
+    <trim prefix="set" suffixOverrides=",">
+        <if test="userId != null">user_id = #{userId},</if>
+        <if test="productId != null">product_id = #{productId},</if>
+        <if test="isCheck != null">is_check = #{isCheck},</if>
+        <if test="number != null">number = #{number},</if>
+        <if test="gmtCreate != null">gmt_create = #{gmtCreate},</if>
+        <if test="gmtModified != null">gmt_modified = now(),</if>
+    </trim>
+    WHERE id = #{id}
+</update>
+
+
 
 </mapper>
