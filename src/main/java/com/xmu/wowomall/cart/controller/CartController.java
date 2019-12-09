@@ -62,7 +62,7 @@ public class CartController {
      */
     @PostMapping("carts")
     @ApiOperation(value = "添加商品到购物车 /add")
-    public Object add(@RequestParam Integer userId, @RequestParam String cart) {
+    public Object add( Integer userId, @RequestBody String cart) {
         if(null == userId)
             ResponseUtil.unlogin();
 
