@@ -64,6 +64,15 @@ public class CartServiceImpl implements CartService {
     public Object getCarts(Integer userId, Integer page, Integer limit, String sort, String order){
 
         List<WowoCartItem> wowoCartItemList = cartDao.getCartItem(userId,page, limit, sort, order);
-        return ResponseUtil.ok(wowoCartItemList);
+        List<Map<String, Object>> wowoCartsVoList = new ArrayList<>(wowoCartItemList.size());
+        for(WowoCartItem oneCart:wowoCartItemList)
+        {
+            Map<String, Object> wowoCartVo = new HashMap<>();
+            wowoCartVo.put("id",oneCart.getId());
+            wowoCartVo.put("productId",oneCart.getProductId());
+            wowoCartVo.put("num",oneCart.getNumber());
+            wowoCartsVoList.add(wowoCartVo);
+        }
+        return ResponseUtil.ok(wowoCartsVoList);
     }
 }
