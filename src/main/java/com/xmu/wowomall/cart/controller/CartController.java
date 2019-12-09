@@ -55,16 +55,16 @@ public class CartController {
     @PostMapping("carts")
     @ApiOperation(value = "添加商品到购物车 /add")
     public Object add(@RequestParam Integer userId, @RequestParam String cart) {
-        if(null == userId)
+        if(null == userId) {
             ResponseUtil.unlogin();
-
+        }
         Integer goodsId = JacksonUtil.parseInteger(cart, "goodsId");
         Integer productId = JacksonUtil.parseInteger(cart, "productId");
         Integer number = JacksonUtil.parseInteger(cart, "number");
 
-        if(null == goodsId || null == productId || null == number)
+        if(null == goodsId || null == productId || null == number) {
             ResponseUtil.badArgument();
-
+        }
         WowoCartItem wowoCartItem = new WowoCartItem();
         wowoCartItem.setProductId(productId);
         wowoCartItem.setNumber(number);
@@ -100,7 +100,21 @@ public class CartController {
     @PutMapping("carts/{id}")
     @ApiOperation(value = "修改某个购物车项信息 /update")
     public Object update(Integer userId, @RequestBody String cart){
-        return null;
+
+        if(null == userId) {
+            ResponseUtil.unlogin();
+        }
+        Integer id = JacksonUtil.parseInteger(cart, "id");
+        Integer goodsId = JacksonUtil.parseInteger(cart, "goodsId");
+        Integer productId = JacksonUtil.parseInteger(cart, "productId");
+        Integer number = JacksonUtil.parseInteger(cart, "number");
+
+        if(null == goodsId || null == productId || null == number) {
+            ResponseUtil.badArgument();
+        }
+
+        return cartService.updateCartItem(userId,id,goodsId,productId,number);
+
     }
 
     /**

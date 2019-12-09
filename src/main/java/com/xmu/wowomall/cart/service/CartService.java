@@ -39,6 +39,13 @@ public interface CartService {
      */
     public Object getCarts(Integer userId);
 
+    /**
+     * 修改购物车商品货品数量
+     *
+     * @param userId   用户ID
+     * @return 订单列表
+     */
+    public Object updateCartItem(Integer userId,Integer id,Integer goodsId,Integer productId,Integer number);
 
 
 }

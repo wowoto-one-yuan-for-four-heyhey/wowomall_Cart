@@ -36,6 +36,16 @@ public class CartDao {
         return wowoCartItems;
     }
 
+    /**
+     * 获取用户订单列表
+     * @param wowoCartItem 购物车项
+     * @return 订单列表
+     */
+    public Object updateCartItem(WowoCartItem wowoCartItem){
+        cartMapper.updateCartItem(wowoCartItem);
+        return null;
+    }
+
 
 
 

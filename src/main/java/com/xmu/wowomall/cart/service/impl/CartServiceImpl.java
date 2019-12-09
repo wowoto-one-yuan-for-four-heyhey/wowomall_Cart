@@ -73,4 +73,24 @@ public class CartServiceImpl implements CartService {
         }
         return ResponseUtil.ok(wowoCartsVoList);
     }
+
+    /**
+     * 获取用户订单列表
+     *
+     * @param userId   用户ID
+     * @param id       订单id
+     * @param goodsId   goodsID
+     * @param productId 产品ID
+     * @param number    num
+     * @return 订单列表
+     */
+    @Override
+    public Object updateCartItem(Integer userId,Integer id,Integer goodsId,Integer productId,Integer number){
+        WowoCartItem wowoCartItem = new WowoCartItem();
+        wowoCartItem.setId(id);
+        wowoCartItem.setUserId(userId);
+        wowoCartItem.setProductId(productId);
+        wowoCartItem.setNumber(number);
+        return cartDao.updateCartItem(wowoCartItem);
+    }
 }

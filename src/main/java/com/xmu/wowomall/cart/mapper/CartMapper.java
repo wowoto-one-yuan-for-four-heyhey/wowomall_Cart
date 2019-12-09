@@ -27,4 +27,6 @@ public interface CartMapper {
     List<WowoCartItem> getCartItems(Integer userId);
 
     List<WowoCartItem> getCartItemsByUserIdAndProductId(Integer userId, Integer productId);
+
+    List<WowoCartItem> updateCartItem(WowoCartItem wowoCartItem);
 }
