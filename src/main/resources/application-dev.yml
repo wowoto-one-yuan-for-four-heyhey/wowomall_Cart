@@ -7,6 +7,7 @@ spring:
     password: zqhlovekly
     driver-class-name: com.mysql.jdbc.Driver
 
+
 mybatis:
   mapper-locations: classpath:cart.mapper/*Mapper.xml
   type-aliases-package: com.xmu.wowomall.cart.domain
