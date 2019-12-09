@@ -38,6 +38,11 @@ public class CartDao {
         return wowoCartItem;
     }
 
+    public WowoCartItem getCartItemById(Integer cartId){
+        WowoCartItem wowoCartItem = cartMapper.getCartItemById(cartId);
+        return wowoCartItem;
+    }
+
     public WowoCartItem addCartItem(WowoCartItem wowoCartItem){
         cartMapper.updateCartItemById(wowoCartItem);
         return wowoCartItem;
@@ -49,7 +54,7 @@ public class CartDao {
      * @return 订单列表
      */
     public Integer updateCartItem(WowoCartItem wowoCartItem){
-        return cartMapper.updateCartItem(wowoCartItem);
+        return  cartMapper.updateCartItemById(wowoCartItem);
     }
 
 
