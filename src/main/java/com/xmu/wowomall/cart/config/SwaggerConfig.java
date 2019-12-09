@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .apiInfo(buildApiInf())
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.xmu.wowomall.cart.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.xmu.wowomall.cart.com.xmu.wowomall.cart.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
