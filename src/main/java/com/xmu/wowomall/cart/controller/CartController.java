@@ -1,7 +1,6 @@
 package com.xmu.wowomall.cart.controller;
 
 
-import com.xmu.wowomall.cart.controller.vo.SubmitCartVo;
 import com.xmu.wowomall.cart.domain.WowoCartItem;
 import com.xmu.wowomall.cart.service.CartService;
 import com.xmu.wowomall.cart.util.ResponseUtil;
@@ -51,24 +50,20 @@ public class CartController {
 
 
     /**
-     * 添加商品到购物车/add
+     * 加入商品到购物车
+     * <p>
+     * 如果已经存在购物车货品，则增加数量；
+     * 否则添加新的购物车货品项。
      *
      * @param userId 用户ID
-     * @param submitCartVo 添加商品到购物车
-     * @return 提交订单操作结果
+     * @param cart   购物车商品信息， { goodsId: xxx, productId: xxx, number: xxx }
+     * @return 加入购物车操作结果
      */
     @PostMapping("carts")
-    public Object submit(Integer userId, @RequestBody SubmitCartVo submitCartVo){
+    @ApiOperation(value = "添加商品到购物车 /add")
+    public Object add(Integer userId, @RequestBody String cart) {
 
-        logger.debug("submit: " + submitCartVo);
-
-        if(null == userId)
-        {    return ResponseUtil.unlogin();}
-        if(null == submitCartVo) {
-            return ResponseUtil.badArgument();
-        }
-
-        return ResponseUtil.ok(submitCartVo);
+        return null;
     }
 
 
