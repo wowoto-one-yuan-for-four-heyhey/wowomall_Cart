@@ -37,7 +37,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Object addCartItem(WowoCartItem wowoCartItem){
+    public WowoCartItem addCartItem(WowoCartItem wowoCartItem){
         WowoCartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(wowoCartItem.getUserId(), wowoCartItem.getProductId());
         if(null != existCartItem) {
             existCartItem.setNumber(existCartItem.getNumber() + wowoCartItem.getNumber());

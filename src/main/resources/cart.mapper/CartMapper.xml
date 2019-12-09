@@ -39,6 +39,9 @@
     WHERE id = #{id}
 </update>
 
-
+<insert id="addCartItem" parameterType="WowoCartItem" useGeneratedKeys="true" keyProperty="id">
+    insert into cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
+    values(#{userId}, #{productId}, #{isCheck}, #{number}, now(), #{gmtModified})
+</insert>
 
 </mapper>
