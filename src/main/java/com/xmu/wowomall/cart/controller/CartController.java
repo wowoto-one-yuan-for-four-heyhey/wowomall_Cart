@@ -2,6 +2,7 @@ package com.xmu.wowomall.cart.controller;
 
 
 import com.xmu.wowomall.cart.controller.vo.SubmitCartVo;
+import com.xmu.wowomall.cart.domain.WowoCartItem;
 import com.xmu.wowomall.cart.service.CartService;
 import com.xmu.wowomall.cart.util.ResponseUtil;
 import io.swagger.annotations.Api;
@@ -42,7 +43,7 @@ public class CartController {
                             @ApiParam(name="sort",value="以什么为序",required=true) @RequestParam(defaultValue = "add_time") String sort,
                             @ApiParam(name="order",value="升/降序",required=true) @RequestParam(defaultValue = "desc") String order)
     {
-        if(null != userId) {
+        if(null == userId) {
             return ResponseUtil.unlogin();
         }
         return cartService.getCarts(userId,page, limit, sort, order);
@@ -53,13 +54,19 @@ public class CartController {
      * 添加商品到购物车/add
      *
      * @param userId 用户ID
-     * @param submitCartVo
+     * @param submitCartVo 添加商品到购物车
      * @return 提交订单操作结果
      */
     @PostMapping("carts")
     public Object submit(Integer userId, @RequestBody SubmitCartVo submitCartVo){
 
+        logger.debug("submit: " + submitCartVo);
 
+        if(null == userId)
+        {    return ResponseUtil.unlogin();}
+        if(null == submitCartVo) {
+            return ResponseUtil.badArgument();
+        }
 
         return ResponseUtil.ok(submitCartVo);
     }
