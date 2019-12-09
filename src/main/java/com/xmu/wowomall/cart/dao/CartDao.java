@@ -3,9 +3,11 @@ package com.xmu.wowomall.cart.dao;
 
 import com.xmu.wowomall.cart.domain.WowoCartItem;
 import com.xmu.wowomall.cart.mapper.CartMapper;
+import com.xmu.wowomall.cart.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -42,9 +44,9 @@ public class CartDao {
      * @return 订单列表
      */
     public Object updateCartItem(WowoCartItem wowoCartItem){
-        cartMapper.updateCartItem(wowoCartItem);
-        return null;
+        return cartMapper.updateCartItem(wowoCartItem);
     }
+
 
 
 
