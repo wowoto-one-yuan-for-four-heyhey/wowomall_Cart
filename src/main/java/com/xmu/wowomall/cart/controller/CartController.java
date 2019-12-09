@@ -1,6 +1,7 @@
 package com.xmu.wowomall.cart.controller;
 
 
+import com.xmu.wowomall.cart.controller.vo.SubmitCartVo;
 import com.xmu.wowomall.cart.service.CartService;
 import com.xmu.wowomall.cart.util.ResponseUtil;
 import io.swagger.annotations.Api;
@@ -9,9 +10,10 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Api(value="carts",tags = "购物车")
 @RestController
@@ -23,7 +25,7 @@ public class CartController {
     private CartService cartService;
 
     /**
-     * 获取用户订单列表
+     * 获取购物车明细/index
      *
      * @param userId   用户ID
      * @param page     分页页数
@@ -46,6 +48,21 @@ public class CartController {
         return cartService.getCarts(userId,page, limit, sort, order);
     }
 
+
+    /**
+     * 添加商品到购物车/add
+     *
+     * @param userId 用户ID
+     * @param submitCartVo
+     * @return 提交订单操作结果
+     */
+    @PostMapping("carts")
+    public Object submit(Integer userId, @RequestBody SubmitCartVo submitCartVo){
+
+
+
+        return ResponseUtil.ok(submitCartVo);
+    }
 
 
 
