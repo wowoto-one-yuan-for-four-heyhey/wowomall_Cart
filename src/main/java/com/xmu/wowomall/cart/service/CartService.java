@@ -32,5 +32,18 @@ public interface CartService {
     void addCartItem(WowoCartItem wowoCartItems);
 
 
+    /**
+     * 获取用户订单列表
+     *
+     * @param userId   用户ID
+     * @param page     分页页数
+     * @param limit     分页大小
+     * @param sort      排序
+     * @param order     正序/逆序
+     * @return 订单列表
+     */
+    public Object getCarts(Integer userId, Integer page, Integer limit, String sort, String order);
+
+
 
 }

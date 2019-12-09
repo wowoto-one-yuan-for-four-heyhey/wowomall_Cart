@@ -40,7 +40,6 @@ public class CartController {
         if(null != userId) {
             return ResponseUtil.unlogin();
         }
-
         return ResponseUtil.fail();
     }
 
