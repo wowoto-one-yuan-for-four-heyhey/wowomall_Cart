@@ -25,9 +25,9 @@ public class CartDao {
      * 根据订单Id信息返回订单物品列表
      * @return 订单物品列表
      */
-    public List<WowoCartItem> getCartItem(Integer userId, Integer page, Integer limit, String sort, String order)
+    public List<WowoCartItem> getCartItem(Integer userId)
     {
-        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItem(userId, page, limit, sort, order);
+        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItem(userId);
         return wowoCartItemList;
     }
 

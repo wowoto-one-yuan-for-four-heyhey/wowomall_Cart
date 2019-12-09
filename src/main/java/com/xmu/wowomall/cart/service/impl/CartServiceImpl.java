@@ -54,16 +54,13 @@ public class CartServiceImpl implements CartService {
      *                 5已完成订单，
      *                 6退货订单，
      *                 7换货订单
-     * @param page     分页页数
-     * @param limit     分页大小
-     * @param sort      以什么为序
-     * @param order     升/降序
+
      * @return 订单列表
      */
     @Override
-    public Object getCarts(Integer userId, Integer page, Integer limit, String sort, String order){
+    public Object getCarts(Integer userId){
 
-        List<WowoCartItem> wowoCartItemList = cartDao.getCartItem(userId,page, limit, sort, order);
+        List<WowoCartItem> wowoCartItemList = cartDao.getCartItem(userId);
         List<Map<String, Object>> wowoCartsVoList = new ArrayList<>(wowoCartItemList.size());
         for(WowoCartItem oneCart:wowoCartItemList)
         {
