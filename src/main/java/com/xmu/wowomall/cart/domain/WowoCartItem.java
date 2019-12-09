@@ -11,7 +11,6 @@ public class WowoCartItem extends CartItem {
 
     private WowoProduct wowoProduct;
 
-
     public WowoProduct getWowoProduct() {
         return wowoProduct;
     }

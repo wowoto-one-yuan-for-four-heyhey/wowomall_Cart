@@ -71,6 +71,7 @@ public class CartServiceImpl implements CartService {
             wowoCartVo.put("id",oneCart.getId());
             wowoCartVo.put("productId",oneCart.getProductId());
             wowoCartVo.put("num",oneCart.getNumber());
+            wowoCartVo.put("beCheck",oneCart.getBeCheck());
             wowoCartsVoList.add(wowoCartVo);
         }
         return ResponseUtil.ok(wowoCartsVoList);
