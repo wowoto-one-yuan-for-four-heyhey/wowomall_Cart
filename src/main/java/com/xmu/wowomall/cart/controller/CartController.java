@@ -3,6 +3,7 @@ package com.xmu.wowomall.cart.controller;
 
 import com.xmu.wowomall.cart.domain.WowoCartItem;
 import com.xmu.wowomall.cart.service.CartService;
+import com.xmu.wowomall.cart.util.JacksonUtil;
 import com.xmu.wowomall.cart.util.ResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -61,15 +62,17 @@ public class CartController {
      */
     @PostMapping("carts")
     @ApiOperation(value = "添加商品到购物车 /add")
-    public Object add(Integer userId, @RequestBody String cart) {
+    public Object add(@RequestParam Integer userId, @RequestParam String cart) {
+        if(null == userId)
+            ResponseUtil.unlogin();
+
+        Integer goodsId = JacksonUtil.parseInteger(cart, "goodsId");
+        Integer productId = JacksonUtil.parseInteger(cart, "productId");
+        Integer number = JacksonUtil.parseInteger(cart, "number");
+
+        if(null == goodsId || null == productId || null == number)
+            ResponseUtil.badArgument();
 
         return null;
     }
-
-
-
-
-
-
-
 }
