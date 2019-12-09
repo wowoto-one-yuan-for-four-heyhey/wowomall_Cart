@@ -27,10 +27,9 @@ public interface CartService {
 
     /**
      *  添加 商品到购物车 /add
-     *  @param wowoCartItems 待添加的购物车项目
+     *  @param wowoCartItem 待添加的购物车项目
      */
-    void addCartItem(WowoCartItem wowoCartItems);
-
+    Object addCartItem(WowoCartItem wowoCartItem);
 
     /**
      * 获取用户订单列表

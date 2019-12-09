@@ -24,7 +24,7 @@ public interface CartMapper {
      * @return 订单
      */
 
-    List<WowoCartItem> getCartItem(Integer userId);
+    List<WowoCartItem> getCartItems(Integer userId);
 
-
+    List<WowoCartItem> getCartItemsByUserIdAndProductId(Integer userId, Integer productId);
 }

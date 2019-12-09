@@ -26,22 +26,14 @@ public class CartController {
     private CartService cartService;
 
     /**
-     * 获取购物车明细/index
+     * 用户购物车信息
      *
      * @param userId   用户ID
-     * @param page     分页页数
-     * @param limit     分页大小
-     * @param sort      以什么为序
-     * @param order     升/降序
-     * @return 订单列表
+     * @return 用户购物车信息
      */
     @GetMapping("carts")
     @ApiOperation(value = "用户获取购物车列表/list", notes = "用户获取订单列表")
-    public Object getCarts(Integer userId,
-                            @ApiParam(name="page",value="页码",required=true) @RequestParam(defaultValue = "1")Integer page,
-                            @ApiParam(name="limit",value="每页条数",required=true) @RequestParam(defaultValue = "10")Integer limit,
-                            @ApiParam(name="sort",value="以什么为序",required=true) @RequestParam(defaultValue = "add_time") String sort,
-                            @ApiParam(name="order",value="升/降序",required=true) @RequestParam(defaultValue = "desc") String order)
+    public Object cartIndex(Integer userId)
     {
         if(null == userId) {
             return ResponseUtil.unlogin();
@@ -73,7 +65,12 @@ public class CartController {
         if(null == goodsId || null == productId || null == number)
             ResponseUtil.badArgument();
 
-        return null;
+        WowoCartItem wowoCartItem = new WowoCartItem();
+        wowoCartItem.setProductId(productId);
+        wowoCartItem.setNumber(number);
+        wowoCartItem.setUserId(userId);
+
+        return cartService.addCartItem(wowoCartItem);
     }
 
     /**

@@ -39,8 +39,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void addCartItem(WowoCartItem wowoCartItems){
-
+    public Object addCartItem(WowoCartItem wowoCartItem){
+        return null;
     }
 
     /**
@@ -60,7 +60,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public Object getCarts(Integer userId){
 
-        List<WowoCartItem> wowoCartItemList = cartDao.getCartItem(userId);
+        List<WowoCartItem> wowoCartItemList = cartDao.getCartItems(userId);
         List<Map<String, Object>> wowoCartsVoList = new ArrayList<>(wowoCartItemList.size());
         for(WowoCartItem oneCart:wowoCartItemList)
         {
