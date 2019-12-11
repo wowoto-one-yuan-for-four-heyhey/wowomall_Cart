@@ -28,12 +28,15 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public WowoCartItem findCartItemById(Integer id) {
-        return null;
+        return cartDao.getCartItemById(id);
     }
 
     @Override
     public void clearCartItem(List<WowoCartItem> wowoCartItems) {
-
+        for(WowoCartItem cartItem : wowoCartItems){
+            Integer cartId = cartItem.getId();
+            cartDao.deleteCartItemById(cartId);
+        }
     }
 
     @Override
