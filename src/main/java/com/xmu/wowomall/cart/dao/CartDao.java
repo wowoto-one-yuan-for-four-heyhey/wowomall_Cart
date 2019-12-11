@@ -43,9 +43,9 @@ public class CartDao {
         return wowoCartItem;
     }
 
-    public WowoCartItem addCartItem(WowoCartItem wowoCartItem){
-        cartMapper.addCartItem(wowoCartItem);
-        return wowoCartItem;
+    public Integer addCartItem(WowoCartItem wowoCartItem){
+
+        return cartMapper.addCartItem(wowoCartItem);
     }
 
     /**

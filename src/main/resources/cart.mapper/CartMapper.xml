@@ -44,17 +44,17 @@
     <trim prefix="set" suffixOverrides=",">
         <if test="userId != null">user_id = #{userId},</if>
         <if test="productId != null">product_id = #{productId},</if>
-        <if test="isCheck != null">is_check = #{isCheck},</if>
+        <if test="beCheck != null">is_check = #{beCheck},</if>
         <if test="number != null">number = #{number},</if>
         <if test="gmtCreate != null">gmt_create = #{gmtCreate},</if>
-        <if test="gmtModified != null">gmt_modified = now(),</if>
+        gmt_modified = now()
     </trim>
     WHERE id = #{id}
 </update>
 
 <insert id="addCartItem" parameterType="WowoCartItem" useGeneratedKeys="true" keyProperty="id">
     insert into cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
-    values(#{userId}, #{productId}, #{isCheck}, #{number}, now(), #{gmtModified})
+    values(#{userId}, #{productId}, #{beCheck}, #{number}, now(), #{gmtModified})
 </insert>
 
 <delete id="deleteCartItemById" parameterType="Integer">
