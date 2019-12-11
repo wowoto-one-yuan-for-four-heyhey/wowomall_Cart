@@ -31,6 +31,7 @@ public class CartServiceImpl implements CartService {
         return cartDao.getCartItemById(id);
     }
 
+
     @Override
     public void clearCartItem(List<WowoCartItem> wowoCartItems) {
         for(WowoCartItem cartItem : wowoCartItems){
