@@ -91,7 +91,7 @@ public class CartController {
      * @param cartItemId   购物车商品信息
      * @return 购物车信息
      */
-    @DeleteMapping("cartItemId/{id}")
+    @DeleteMapping("cartItems/{id}")
     @ApiOperation(value = "删除一个购物车项 /delete")
     public Object delete(@PathVariable("id")Integer cartItemId){
         Integer userId = Integer.valueOf(request.getHeader("id"));
@@ -105,6 +105,20 @@ public class CartController {
         }
 
         cartService.deleteCartItem(cartItemId);
+        return ResponseUtil.ok();
+    }
+
+    /**
+     * 购物车商品删除
+     *
+     * @param cartItems   购物车商品信息
+     * @return 购物车信息
+     */
+    @DeleteMapping("cartItems")
+    public Object clearCartItem(List<CartItem> cartItems){
+        for (CartItem cartItem: cartItems){
+            cartService.deleteCartItem(cartItem.getId());
+        }
         return ResponseUtil.ok();
     }
 }

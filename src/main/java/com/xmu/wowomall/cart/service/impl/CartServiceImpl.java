@@ -31,11 +31,6 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void clearCartItem(List<CartItem> cartItems) {
-
-    }
-
-    @Override
     public CartItem addCartItem(CartItem cartItem){
         CartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(cartItem.getUserId(), cartItem.getProductId());
         if(null != existCartItem) {

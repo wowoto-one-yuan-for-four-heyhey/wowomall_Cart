@@ -20,13 +20,6 @@ public interface CartService {
     CartItem findCartItemById(Integer id);
 
     /**
-     * 清空购物车里的指定项目
-     * @param wowoCartItems 待清空的项目
-     * @return 清空购物车
-     */
-    void clearCartItem(List<CartItem> wowoCartItems);
-
-    /**
      *  添加 商品到购物车 /add
      *  @param cartItem 待添加的购物车项目
      *  @return 添加成功与否
