@@ -2,13 +2,12 @@ package com.xmu.wowomall.cart.service.impl;
 
 
 import com.xmu.wowomall.cart.dao.CartDao;
-import com.xmu.wowomall.cart.domain.WowoCartItem;
+import com.xmu.wowomall.cart.domain.CartItem;
 import com.xmu.wowomall.cart.service.CartService;
 import com.xmu.wowomall.cart.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,29 +26,25 @@ public class CartServiceImpl implements CartService {
     private CartDao cartDao;
 
     @Override
-    public WowoCartItem findCartItemById(Integer id) {
-        return cartDao.getCartItemById(id);
-    }
-
-
-    @Override
-    public void clearCartItem(List<WowoCartItem> wowoCartItems) {
-        for(WowoCartItem cartItem : wowoCartItems){
-            Integer cartId = cartItem.getId();
-            cartDao.deleteCartItemById(cartId);
-        }
+    public CartItem findCartItemById(Integer id) {
+        return null;
     }
 
     @Override
-    public WowoCartItem addCartItem(WowoCartItem wowoCartItem){
-        WowoCartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(wowoCartItem.getUserId(), wowoCartItem.getProductId());
+    public void clearCartItem(List<CartItem> cartItems) {
+
+    }
+
+    @Override
+    public CartItem addCartItem(CartItem cartItem){
+        CartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(cartItem.getUserId(), cartItem.getProductId());
         if(null != existCartItem) {
-            existCartItem.setNumber(existCartItem.getNumber() + wowoCartItem.getNumber());
+            existCartItem.setNumber(existCartItem.getNumber() + cartItem.getNumber());
             cartDao.updateCartItem(existCartItem);
             return existCartItem;
         }
-        cartDao.addCartItem(wowoCartItem);
-        return wowoCartItem;
+        cartDao.addCartItem(cartItem);
+        return cartItem;
     }
 
     /**
@@ -66,61 +61,24 @@ public class CartServiceImpl implements CartService {
      * @return 订单列表
      */
     @Override
-    public Object getCarts(Integer userId){
-        List<WowoCartItem> wowoCartItemList = cartDao.getCartItems(userId);
-        List<Map<String, Object>> wowoCartsVoList = new ArrayList<>(wowoCartItemList.size());
-        for(WowoCartItem oneCart:wowoCartItemList)
-        {
-            Map<String, Object> wowoCartVo = new HashMap<>();
-            wowoCartVo.put("id",oneCart.getId());
-            wowoCartVo.put("productId",oneCart.getProductId());
-            wowoCartVo.put("num",oneCart.getNumber());
-            wowoCartVo.put("beCheck",oneCart.getBeCheck());
-            wowoCartsVoList.add(wowoCartVo);
-        }
-        return ResponseUtil.ok(wowoCartsVoList);
+    public List<CartItem> getCartItems(Integer userId){
+        return cartDao.getCartItems(userId);
     }
 
     /**
      * 获取用户订单列表
      *
-     * @param userId   用户ID
-     * @param id       订单id
-     * @param goodsId   goodsID
-     * @param productId 产品ID
-     * @param number    num
+     * @param cartItem
      * @return 订单列表
      */
     @Override
-    public Object updateCartItem(Integer userId,Integer id,Integer goodsId,Integer productId,Integer number){
-
-        WowoCartItem cartItem = cartDao.getCartItemById(id);
-        if(cartItem == null){
-            return ResponseUtil.fail();
-        }
-        cartItem.setNumber(number);
-        cartItem.setProductId(productId);
-        cartItem.setUserId(userId);
-        Integer num = cartDao.updateCartItem(cartItem);
-        if (num == 1){
-            return ResponseUtil.ok(num);
-        }
-        return ResponseUtil.fail();
+    public CartItem updateCartItem(CartItem cartItem){
+        cartDao.updateCartItem(cartItem);
+        return cartItem;
     }
 
     @Override
-    public Object deleteCartItem(Integer userId,Integer productId){
-        WowoCartItem cartItem = cartDao.getCartItemsByUserIdAndProductId(userId,productId);
-        if(cartItem == null){
-            return ResponseUtil.fail();
-        }
-        Integer num = cartDao.deleteCartItemById(cartItem.getId());
-        if (!num.equals(1)) {
-            return ResponseUtil.fail();
-        }
-
-        return ResponseUtil.ok();
+    public Integer deleteCartItem(Integer cartItemId){
+        return cartDao.deleteCartItemById(cartItemId);
     }
-
-
 }

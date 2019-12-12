@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xmu.wowomall.cart.mapper.CartMapper">
 
-<select id="getCartItemsByUserId" resultType="WowoCartItem">
+<select id="getCartItemsByUserId" resultType="CartItem">
     select id,
            user_id,
            product_id,
@@ -14,7 +14,7 @@
     where user_id = #{userId}
 </select>
 
-<select id="getCartItemByUserIdAndProductId" resultType="WowoCartItem">
+<select id="getCartItemByUserIdAndProductId" resultType="CartItem">
     select id,
            user_id,
            product_id,
@@ -26,7 +26,7 @@
     where user_id = #{userId} and product_id = #{productId}
 </select>
 
-<select id="getCartItemById" resultType="WowoCartItem">
+<select id="getCartItemById" resultType="CartItem">
     select id,
            user_id,
            product_id,
@@ -39,7 +39,7 @@
 </select>
 
 
-<update id="updateCartItemById" parameterType="WowoCartItem">
+<update id="updateCartItemById" parameterType="CartItem">
     update cart_item
     <trim prefix="set" suffixOverrides=",">
         <if test="userId != null">user_id = #{userId},</if>
@@ -52,7 +52,7 @@
     WHERE id = #{id}
 </update>
 
-<insert id="addCartItem" parameterType="WowoCartItem" useGeneratedKeys="true" keyProperty="id">
+<insert id="addCartItem" parameterType="CartItem" useGeneratedKeys="true" keyProperty="id">
     insert into cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
     values(#{userId}, #{productId}, #{beCheck}, #{number}, now(), #{gmtModified})
 </insert>

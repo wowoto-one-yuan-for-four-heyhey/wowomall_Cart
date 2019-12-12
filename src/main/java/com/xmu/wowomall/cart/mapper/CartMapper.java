@@ -1,7 +1,7 @@
 package com.xmu.wowomall.cart.mapper;
 
 
-import com.xmu.wowomall.cart.domain.WowoCartItem;
+import com.xmu.wowomall.cart.domain.CartItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -19,44 +19,20 @@ public interface CartMapper {
 
     /**
      * 根据订单查询信息返回订单对象
-     * @param userId 用户id
-     * @return 订单
-     */
-    List<WowoCartItem> getCartItemsByUserId(Integer userId);
 
-    /**
-     * 根据订单查询信息返回订单对象
-     * @param productId 产品ID
-     * @param userId 用户id
-     * @return 订单
-     */
-    WowoCartItem getCartItemByUserIdAndProductId(Integer userId, Integer productId);
 
-    /**
-     *  根据订单查询信息返回订单对象
-     * @param cartId 购物车id
      * @return 订单
      */
-    WowoCartItem getCartItemById(Integer cartId);
 
-    /**
-     *  根据订单更新信息
-     * @param wowoCartItem cartItem
-     * @return 订单
-     */
-    Integer updateCartItemById(WowoCartItem wowoCartItem);
+    List<CartItem> getCartItemsByUserId(Integer userId);
 
-    /**
-     * 添加订单信息
-     * @param wowoCartItem cartItem
-     * @return 订单
-     */
-    Integer addCartItem(WowoCartItem wowoCartItem);
+    CartItem getCartItemByUserIdAndProductId(Integer userId, Integer productId);
 
-    /**
-     * 删除订单更新信息
-     * @param cartId 购物车ID
-     * @return 订单
-     */
+    CartItem getCartItemById(Integer cartId);
+
+    Integer updateCartItemById(CartItem cartItem);
+
+    Integer addCartItem(CartItem cartItem);
+
     Integer deleteCartItemById(Integer cartId);
 }

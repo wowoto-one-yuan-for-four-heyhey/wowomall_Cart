@@ -1,13 +1,11 @@
 package com.xmu.wowomall.cart.dao;
 
 
-import com.xmu.wowomall.cart.domain.WowoCartItem;
+import com.xmu.wowomall.cart.domain.CartItem;
 import com.xmu.wowomall.cart.mapper.CartMapper;
-import com.xmu.wowomall.cart.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -27,34 +25,34 @@ public class CartDao {
      * 根据订单Id信息返回订单物品列表
      * @return 订单物品列表
      */
-    public List<WowoCartItem> getCartItems(Integer userId)
+    public List<CartItem> getCartItems(Integer userId)
     {
-        List<WowoCartItem> wowoCartItemList = cartMapper.getCartItemsByUserId(userId);
-        return wowoCartItemList;
+        List<CartItem> cartItemList = cartMapper.getCartItemsByUserId(userId);
+        return cartItemList;
     }
 
-    public WowoCartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
-        WowoCartItem wowoCartItem = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
-        return wowoCartItem;
+    public CartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
+        CartItem cartItem = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
+        return cartItem;
     }
 
-    public WowoCartItem getCartItemById(Integer cartId){
-        WowoCartItem wowoCartItem = cartMapper.getCartItemById(cartId);
-        return wowoCartItem;
+    public CartItem getCartItemById(Integer cartId){
+        CartItem cartItem = cartMapper.getCartItemById(cartId);
+        return cartItem;
     }
 
-    public Integer addCartItem(WowoCartItem wowoCartItem){
-
-        return cartMapper.addCartItem(wowoCartItem);
+    public CartItem addCartItem(CartItem cartItem){
+        cartMapper.addCartItem(cartItem);
+        return cartItem;
     }
 
     /**
      * 获取用户订单列表
-     * @param wowoCartItem 购物车项
+     * @param cartItem 购物车项
      * @return 订单列表
      */
-    public Integer updateCartItem(WowoCartItem wowoCartItem){
-        return  cartMapper.updateCartItemById(wowoCartItem);
+    public Integer updateCartItem(CartItem cartItem){
+        return  cartMapper.updateCartItemById(cartItem);
     }
 
 
