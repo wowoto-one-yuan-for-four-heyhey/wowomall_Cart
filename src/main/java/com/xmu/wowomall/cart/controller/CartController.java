@@ -44,7 +44,6 @@ public class CartController {
         return ResponseUtil.ok(cartItems);
     }
 
-
     /**
      * 加入商品到购物车
      * 如果已经存在购物车货品，则增加数量；
