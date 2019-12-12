@@ -3,6 +3,7 @@ package com.xmu.wowomall.cart.dao;
 
 import com.xmu.wowomall.cart.domain.CartItem;
 import com.xmu.wowomall.cart.mapper.CartMapper;
+import com.xmu.wowomall.cart.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,9 @@ public class CartDao {
     @Autowired
     private CartMapper cartMapper;
 
+    @Autowired
+    private GoodsService goodsService;
+
     /**
      * 根据订单Id信息返回订单物品列表
      * @return 订单物品列表
@@ -28,16 +32,21 @@ public class CartDao {
     public List<CartItem> getCartItems(Integer userId)
     {
         List<CartItem> cartItemList = cartMapper.getCartItemsByUserId(userId);
+        for (CartItem cartItem: cartItemList){
+            cartItem.setProduct(goodsService.getProductById(cartItem.getProductId()));
+        }
         return cartItemList;
     }
 
     public CartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
         CartItem cartItem = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
+        cartItem.setProduct(goodsService.getProductById(cartItem.getProductId()));
         return cartItem;
     }
 
     public CartItem getCartItemById(Integer cartId){
         CartItem cartItem = cartMapper.getCartItemById(cartId);
+        cartItem.setProduct(goodsService.getProductById(cartItem.getProductId()));
         return cartItem;
     }
 

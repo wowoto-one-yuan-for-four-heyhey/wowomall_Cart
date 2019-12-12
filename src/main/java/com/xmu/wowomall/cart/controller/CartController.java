@@ -32,7 +32,6 @@ public class CartController {
 
     /**
      * 用户购物车信息
-     *
      * @return List<CartItem>   用户购物车信息
      */
     @GetMapping("cartItems")
@@ -89,7 +88,7 @@ public class CartController {
      * 购物车商品删除
      *
      * @param cartItemId   购物车商品信息
-     * @return 购物车信息
+     * @return
      */
     @DeleteMapping("cartItems/{id}")
     @ApiOperation(value = "删除一个购物车项 /delete")
@@ -112,7 +111,7 @@ public class CartController {
      * 购物车商品删除
      *
      * @param cartItems   购物车商品信息
-     * @return 购物车信息
+     * @return
      */
     @DeleteMapping("cartItems")
     public Object clearCartItem(List<CartItem> cartItems){
