@@ -6,7 +6,6 @@ import com.xmu.wowomall.cart.domain.CartItem;
 import com.xmu.wowomall.cart.service.CartService;
 import com.xmu.wowomall.cart.util.ResponseUtil;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +30,22 @@ public class CartController {
     private CartDao cartDao;
 
     /**
+     * 取得购物车中的一项
+     *
+     * @param cartItemId
+     * @return cartItem
+     */
+    @GetMapping("cartItems/{id}")
+    public CartItem findCartItemById(@PathVariable Integer cartItemId) {
+        Integer userId = Integer.valueOf(request.getHeader("id"));
+        return cartDao.getCartItemById(cartItemId);
+    }
+
+    /**
      * 用户购物车信息
      * @return List<CartItem>   用户购物车信息
      */
     @GetMapping("cartItems")
-    @ApiOperation(value = "用户获取购物车列表/list", notes = "用户获取订单列表")
     public Object getCartItems()
     {
         Integer userId = Integer.valueOf(request.getHeader("id"));
@@ -52,7 +62,6 @@ public class CartController {
      * @return cartItem
      */
     @PostMapping("cartItems")
-    @ApiOperation(value = "添加商品到购物车")
     public Object add(@RequestParam CartItem cartItem) {
         Integer userId = Integer.valueOf(request.getHeader("id"));
         if(userId != cartItem.getUserId()){
@@ -70,7 +79,6 @@ public class CartController {
      * @return cartItem
      */
     @PutMapping("cartItems/{id}")
-    @ApiOperation(value = "修改某个购物车项信息 /update")
     public Object update(@PathVariable("id")Integer cartItemId, @RequestParam CartItem cartItem){
         Integer userId = Integer.valueOf(request.getHeader("id"));
         if(userId != cartItem.getUserId()){
@@ -91,7 +99,6 @@ public class CartController {
      * @return
      */
     @DeleteMapping("cartItems/{id}")
-    @ApiOperation(value = "删除一个购物车项 /delete")
     public Object delete(@PathVariable("id")Integer cartItemId){
         Integer userId = Integer.valueOf(request.getHeader("id"));
         CartItem cartItem = cartDao.getCartItemById(cartItemId);
