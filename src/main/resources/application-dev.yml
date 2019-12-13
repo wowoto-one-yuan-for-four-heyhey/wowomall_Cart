@@ -7,7 +7,7 @@ spring:
     password: zqhlovekly
     driver-class-name: com.mysql.jdbc.Driver
   application:
-    name: wowoto-cart
+    name: Cart
 
 
 mybatis:
