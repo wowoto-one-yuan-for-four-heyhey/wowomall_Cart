@@ -54,7 +54,7 @@
 
 <insert id="addCartItem" parameterType="CartItem" useGeneratedKeys="true" keyProperty="id">
     insert into cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
-    values(#{userId}, #{productId}, #{beCheck}, #{number}, now(), #{gmtModified})
+    values(#{userId}, #{productId}, #{beCheck}, #{number}, now(), now())
 </insert>
 
 <delete id="deleteCartItemById" parameterType="Integer">

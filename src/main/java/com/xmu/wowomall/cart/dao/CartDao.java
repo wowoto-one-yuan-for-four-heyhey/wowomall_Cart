@@ -40,7 +40,9 @@ public class CartDao {
 
     public CartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
         CartItem cartItem = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
-        cartItem.setProduct(goodsService.getProductById(cartItem.getProductId()));
+        if(cartItem != null) {
+            cartItem.setProduct(goodsService.getProductById(cartItem.getProductId()));
+        }
         return cartItem;
     }
 

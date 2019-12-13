@@ -62,10 +62,13 @@ public class CartController {
      * @return cartItem
      */
     @PostMapping("cartItems")
-    public Object add(@RequestParam CartItem cartItem) {
+    public Object add(@RequestBody CartItem cartItem) {
         Integer userId = Integer.valueOf(request.getHeader("id"));
+        if(cartItem.getUserId() == null || cartItem.getProductId() == null || cartItem.getNumber() == null){
+            return ResponseUtil.badArgument();
+        }
         if(userId != cartItem.getUserId()){
-            ResponseUtil.unauthz();
+            return ResponseUtil.unauthz();
         }
 
         cartItem = cartService.addCartItem(cartItem);
@@ -79,13 +82,16 @@ public class CartController {
      * @return cartItem
      */
     @PutMapping("cartItems/{id}")
-    public Object update(@PathVariable("id")Integer cartItemId, @RequestParam CartItem cartItem){
+    public Object update(@PathVariable("id")Integer cartItemId, @RequestBody CartItem cartItem){
         Integer userId = Integer.valueOf(request.getHeader("id"));
         if(userId != cartItem.getUserId()){
             return ResponseUtil.unauthz();
         }
-        if(cartItemId != cartItem.getId()){
+        if(cartItem.getUserId() == null || cartItem.getProductId() == null || cartItem.getNumber() == null){
             return ResponseUtil.badArgument();
+        }
+        if(cartItemId != cartItem.getId()){
+            return ResponseUtil.badArgumentValue();
         }
 
         cartItem = cartService.updateCartItem(cartItem);
@@ -121,7 +127,7 @@ public class CartController {
      * @return
      */
     @DeleteMapping("cartItems")
-    public Object clearCartItem(List<CartItem> cartItems){
+    public Object clearCartItem(@RequestBody List<CartItem> cartItems){
         for (CartItem cartItem: cartItems){
             cartService.deleteCartItem(cartItem.getId());
         }
