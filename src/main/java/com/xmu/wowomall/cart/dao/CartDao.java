@@ -2,8 +2,11 @@ package com.xmu.wowomall.cart.dao;
 
 
 import com.xmu.wowomall.cart.domain.CartItem;
+import com.xmu.wowomall.cart.domain.Product;
 import com.xmu.wowomall.cart.mapper.CartMapper;
 import com.xmu.wowomall.cart.service.GoodsService;
+import com.xmu.wowomall.cart.service.RemoteGoodsService;
+import com.xmu.wowomall.cart.util.JacksonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

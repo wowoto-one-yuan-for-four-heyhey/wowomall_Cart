@@ -30,7 +30,7 @@
     select id,
            user_id,
            product_id,
-           is_check,
+           is_check as be_check,
            number,
            gmt_create,
            gmt_modified

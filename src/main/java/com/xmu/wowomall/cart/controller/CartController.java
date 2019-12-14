@@ -35,9 +35,10 @@ public class CartController {
      * @return cartItem
      */
     @GetMapping("cartItems/{id}")
-    public CartItem findCartItemById(@PathVariable Integer cartItemId) {
+    public Object findCartItemById(@PathVariable("id") Integer cartItemId) {
         Integer userId = Integer.valueOf(request.getHeader("id"));
-        return cartDao.getCartItemById(cartItemId);
+        CartItem cartItem = cartDao.getCartItemById(cartItemId);
+        return ResponseUtil.ok(cartItem);
     }
 
     /**
