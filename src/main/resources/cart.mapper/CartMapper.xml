@@ -40,7 +40,7 @@
 
 
 <update id="updateCartItemById" parameterType="CartItem">
-    update cart_item
+    update oomall_cart_item
     <trim prefix="set" suffixOverrides=",">
         <if test="userId != null">user_id = #{userId},</if>
         <if test="productId != null">product_id = #{productId},</if>

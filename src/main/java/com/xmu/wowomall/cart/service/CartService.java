@@ -17,7 +17,7 @@ public interface CartService {
      * @param id 对象ID
      * @return wowoCartItem对象
      */
-    CartItem findCartItemById(Integer id);
+    CartItem getCartItemById(Integer id);
 
     /**
      *  添加 商品到购物车 /add
@@ -32,7 +32,7 @@ public interface CartService {
      * @param userId   用户ID
      * @return 订单列表
      */
-    public List<CartItem> getCartItems(Integer userId);
+    public List<CartItem> getCartItemsByUserId(Integer userId);
 
     /**
      * 修改购物车商品货品数量
@@ -48,5 +48,5 @@ public interface CartService {
      * @param cartItemId
      * @return 订单列表
      */
-    public Integer deleteCartItem(Integer cartItemId);
+    public boolean deleteCartItem(Integer cartItemId);
 }

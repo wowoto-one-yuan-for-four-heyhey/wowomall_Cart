@@ -22,8 +22,8 @@ public class CartServiceImpl implements CartService {
     private CartDao cartDao;
 
     @Override
-    public CartItem findCartItemById(Integer id) {
-        return null;
+    public CartItem getCartItemById(Integer id) {
+        return cartDao.getCartItemById(id);
     }
 
     @Override
@@ -52,8 +52,8 @@ public class CartServiceImpl implements CartService {
      * @return 订单列表
      */
     @Override
-    public List<CartItem> getCartItems(Integer userId){
-        return cartDao.getCartItems(userId);
+    public List<CartItem> getCartItemsByUserId(Integer userId){
+        return cartDao.getCartItemsByUserId(userId);
     }
 
     /**
@@ -69,7 +69,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Integer deleteCartItem(Integer cartItemId){
+    public boolean deleteCartItem(Integer cartItemId){
         return cartDao.deleteCartItemById(cartItemId);
     }
 }

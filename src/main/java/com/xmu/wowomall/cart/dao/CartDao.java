@@ -29,7 +29,7 @@ public class CartDao {
      * 根据订单Id信息返回订单物品列表
      * @return 订单物品列表
      */
-    public List<CartItem> getCartItems(Integer userId)
+    public List<CartItem> getCartItemsByUserId(Integer userId)
     {
         List<CartItem> cartItemList = cartMapper.getCartItemsByUserId(userId);
         for (CartItem cartItem: cartItemList){
@@ -64,8 +64,8 @@ public class CartDao {
      * @param cartItem 购物车项
      * @return 订单列表
      */
-    public Integer updateCartItem(CartItem cartItem){
-        return  cartMapper.updateCartItemById(cartItem);
+    public boolean updateCartItem(CartItem cartItem){
+        return cartMapper.updateCartItemById(cartItem) == 1;
     }
 
 
@@ -74,12 +74,8 @@ public class CartDao {
      * @param cartId 购物车id
      * @return 订单列表
      */
-    public Integer deleteCartItemById(Integer cartId){
-
-        return cartMapper.deleteCartItemById(cartId);
+    public boolean deleteCartItemById(Integer cartId){
+        return cartMapper.deleteCartItemById(cartId) == 1;
     }
-
-
-
 
 }

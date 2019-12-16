@@ -59,7 +59,7 @@ public class CartController {
     {
         Integer userId = Integer.valueOf(request.getHeader("userId"));
         System.out.println(userId);
-        List<CartItem> cartItems = cartService.getCartItems(userId);
+        List<CartItem> cartItems = cartService.getCartItemsByUserId(userId);
         return ResponseUtil.ok(cartItems);
     }
 
