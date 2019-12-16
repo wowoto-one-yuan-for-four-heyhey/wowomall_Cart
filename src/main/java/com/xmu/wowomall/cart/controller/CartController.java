@@ -73,11 +73,21 @@ public class CartController {
      */
     @PostMapping("cartItems")
     public Object add(@RequestBody CartItem cartItem) {
-        Integer userId = Integer.valueOf(request.getHeader("id"));
+
+
+        String userIdString = request.getHeader("userId");
+        if( userIdString == null|| "".equals(userIdString)){
+            return ResponseUtil.unlogin();
+        }
+
+        Integer userId = Integer.valueOf(request.getHeader("userId"));
+        if(userId < 0){
+            return ResponseUtil.unlogin();
+        }
         if(cartItem.getUserId() == null || cartItem.getProductId() == null || cartItem.getNumber() == null){
             return ResponseUtil.badArgument();
         }
-        if(userId != cartItem.getUserId()){
+        if(!userId.equals(cartItem.getUserId())){
             return ResponseUtil.unauthz();
         }
 
@@ -117,6 +127,7 @@ public class CartController {
     @DeleteMapping("cartItems/{id}")
     public Object delete(@PathVariable("id")Integer cartItemId){
         Integer userId = Integer.valueOf(request.getHeader("id"));
+
         CartItem cartItem = cartDao.getCartItemById(cartItemId);
 
         if(userId != cartItem.getUserId()){
