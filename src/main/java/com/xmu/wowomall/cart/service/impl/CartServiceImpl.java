@@ -4,14 +4,10 @@ package com.xmu.wowomall.cart.service.impl;
 import com.xmu.wowomall.cart.dao.CartDao;
 import com.xmu.wowomall.cart.domain.CartItem;
 import com.xmu.wowomall.cart.service.CartService;
-import com.xmu.wowomall.cart.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**

@@ -10,7 +10,7 @@
            number,
            gmt_create,
            gmt_modified
-    from cart_item
+    from oomall_cart_item
     where user_id = #{userId}
 </select>
 
@@ -22,7 +22,7 @@
            number,
            gmt_create,
            gmt_modified
-    from cart_item
+    from oomall_cart_item
     where user_id = #{userId} and product_id = #{productId}
 </select>
 
@@ -34,7 +34,7 @@
            number,
            gmt_create,
            gmt_modified
-    from cart_item
+    from oomall_cart_item
     where id = #{cartId}
 </select>
 
@@ -53,12 +53,12 @@
 </update>
 
 <insert id="addCartItem" parameterType="CartItem" useGeneratedKeys="true" keyProperty="id">
-    insert into cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
+    insert into oomall_cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
     values(#{userId}, #{productId}, #{beCheck}, #{number}, now(), now())
 </insert>
 
 <delete id="deleteCartItemById" parameterType="Integer">
-    delete from cart_item where id = #{id}
+    delete from oomall_cart_item where id = #{id}
 </delete>
 
 </mapper>

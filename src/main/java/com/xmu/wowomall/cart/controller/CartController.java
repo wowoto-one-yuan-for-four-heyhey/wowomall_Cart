@@ -36,9 +36,18 @@ public class CartController {
      */
     @GetMapping("cartItems/{id}")
     public Object findCartItemById(@PathVariable("id") Integer cartItemId) {
-        Integer userId = Integer.valueOf(request.getHeader("id"));
-        CartItem cartItem = cartDao.getCartItemById(cartItemId);
-        return ResponseUtil.ok(cartItem);
+        Integer userId = Integer.valueOf(request.getHeader("userId"));
+        if(userId != null){
+            CartItem cartItem = cartDao.getCartItemById(cartItemId);
+            if(cartItem == null){return ResponseUtil.fail();}
+            if(!userId.equals(cartItem.getUserId())){
+                return ResponseUtil.unauthz();
+            }
+            return ResponseUtil.ok(cartItem);
+        }
+        else {
+            return ResponseUtil.fail();
+        }
     }
 
     /**
@@ -48,7 +57,8 @@ public class CartController {
     @GetMapping("cartItems")
     public Object getCartItems()
     {
-        Integer userId = Integer.valueOf(request.getHeader("id"));
+        Integer userId = Integer.valueOf(request.getHeader("userId"));
+        System.out.println(userId);
         List<CartItem> cartItems = cartService.getCartItems(userId);
         return ResponseUtil.ok(cartItems);
     }
