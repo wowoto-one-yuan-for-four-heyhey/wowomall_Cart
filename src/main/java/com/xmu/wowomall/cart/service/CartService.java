@@ -27,6 +27,13 @@ public interface CartService {
     CartItem addCartItem(CartItem cartItem);
 
     /**
+     *  添加 商品到购物车 数量直接覆盖
+     *  @param cartItem 待添加的购物车项目
+     *  @return 添加成功与否
+     */
+    CartItem fastAddCartItem(CartItem cartItem);
+
+    /**
      * 获取用户订单列表
      *
      * @param userId   用户ID

@@ -73,8 +73,6 @@ public class CartController {
      */
     @PostMapping("cartItems")
     public Object add(@RequestBody CartItem cartItem) {
-
-
         String userIdString = request.getHeader("userId");
         if( userIdString == null|| "".equals(userIdString)){
             return ResponseUtil.unlogin();
@@ -92,6 +90,28 @@ public class CartController {
         }
 
         cartItem = cartService.addCartItem(cartItem);
+        return ResponseUtil.ok(cartItem);
+    }
+
+    /**
+     * 快速购买
+     *
+     * @param cartItem
+     * @return cartItem
+     */
+    @PostMapping("fastAddCartItems")
+    public Object fastAdd(@RequestBody CartItem cartItem) {
+        String userIdString = request.getHeader("userId");
+        if( userIdString == null|| "".equals(userIdString)){
+            return ResponseUtil.unlogin();
+        }
+
+        Integer userId = Integer.valueOf(request.getHeader("userId"));
+        if(userId < 0){ return ResponseUtil.unlogin(); }
+        if(cartItem.getProductId() == null || cartItem.getNumber() == null){ return ResponseUtil.badArgument(); }
+        if(cartItem.getUserId() != null && !userId.equals(cartItem.getUserId())){ return ResponseUtil.unauthz(); }
+
+        cartItem = cartService.fastAddCartItem(cartItem);
         return ResponseUtil.ok(cartItem);
     }
 

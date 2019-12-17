@@ -38,6 +38,18 @@ public class CartServiceImpl implements CartService {
         return cartItem;
     }
 
+    @Override
+    public CartItem fastAddCartItem(CartItem cartItem){
+        CartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(cartItem.getUserId(), cartItem.getProductId());
+        if(null != existCartItem) {
+            existCartItem.setNumber(cartItem.getNumber());
+            cartDao.updateCartItem(existCartItem);
+            return existCartItem;
+        }
+        cartDao.addCartItem(cartItem);
+        return cartItem;
+    }
+
     /**
      * 获取用户订单列表
      *
