@@ -10,7 +10,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @MapperScan("com.xmu.wowomall.cart.mapper")
 @EnableEurekaClient
 @EnableFeignClients
-
 public class CartApplication {
 
     public static void main(String[] args) {

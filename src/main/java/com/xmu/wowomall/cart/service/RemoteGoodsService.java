@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Date: 2019/12/12 22:56
  */
 @Service
-@FeignClient("GoodsInfo")
+@FeignClient("goodsInfoService")
 public interface RemoteGoodsService {
     @GetMapping("products/{id}")
     String getProductById(@PathVariable("id") Integer productId);
