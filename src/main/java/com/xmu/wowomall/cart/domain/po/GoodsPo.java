@@ -18,7 +18,7 @@ public class GoodsPo {
     /**
      * 商品序列号
      */
-     private String goodsSn;
+    private String goodsSn;
     /**
      * 商品简称
      */
@@ -43,7 +43,7 @@ public class GoodsPo {
     /**
      * 上下架状态，0表示下架，1表示上架，2表示最新，3表示最热，4表示最新且最热
      */
-    private Boolean statusCode;
+    private Integer statusCode;
     /**
      * 分享链接
      */
@@ -119,7 +119,7 @@ public class GoodsPo {
         return this.detail;
     }
 
-    public Boolean getStatusCode() {
+    public Integer getStatusCode() {
         return this.statusCode;
     }
 
@@ -203,7 +203,7 @@ public class GoodsPo {
         this.detail = detail;
     }
 
-    public void setStatusCode(Boolean statusCode) {
+    public void setStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
     }
 

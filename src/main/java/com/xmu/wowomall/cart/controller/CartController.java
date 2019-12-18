@@ -36,18 +36,9 @@ public class CartController {
      */
     @GetMapping("cartItems/{id}")
     public Object findCartItemById(@PathVariable("id") Integer cartItemId) {
-        Integer userId = Integer.valueOf(request.getHeader("userId"));
-        if(userId != null){
-            CartItem cartItem = cartDao.getCartItemById(cartItemId);
-            if(cartItem == null){return ResponseUtil.fail();}
-            if(!userId.equals(cartItem.getUserId())){
-                return ResponseUtil.unauthz();
-            }
-            return ResponseUtil.ok(cartItem);
-        }
-        else {
-            return ResponseUtil.fail();
-        }
+        CartItem cartItem = cartDao.getCartItemById(cartItemId);
+        if(cartItem == null){return ResponseUtil.fail();}
+        return ResponseUtil.ok(cartItem);
     }
 
     /**
@@ -57,8 +48,9 @@ public class CartController {
     @GetMapping("cartItems")
     public Object getCartItems()
     {
-        Integer userId = Integer.valueOf(request.getHeader("userId"));
-        System.out.println(userId);
+        if(request.getHeader("id") == null)
+            return ResponseUtil.unlogin();
+        Integer userId = Integer.valueOf(request.getHeader("id"));
         List<CartItem> cartItems = cartService.getCartItemsByUserId(userId);
         return ResponseUtil.ok(cartItems);
     }
@@ -73,12 +65,10 @@ public class CartController {
      */
     @PostMapping("cartItems")
     public Object add(@RequestBody CartItem cartItem) {
-        String userIdString = request.getHeader("userId");
-        if( userIdString == null|| "".equals(userIdString)){
+        if(request.getHeader("id") == null)
             return ResponseUtil.unlogin();
-        }
 
-        Integer userId = Integer.valueOf(request.getHeader("userId"));
+        Integer userId = Integer.valueOf(request.getHeader("id"));
         if(userId < 0){
             return ResponseUtil.unlogin();
         }
@@ -101,12 +91,10 @@ public class CartController {
      */
     @PostMapping("fastAddCartItems")
     public Object fastAdd(@RequestBody CartItem cartItem) {
-        String userIdString = request.getHeader("userId");
-        if( userIdString == null|| "".equals(userIdString)){
+        if(request.getHeader("id") == null)
             return ResponseUtil.unlogin();
-        }
 
-        Integer userId = Integer.valueOf(request.getHeader("userId"));
+        Integer userId = Integer.valueOf(request.getHeader("id"));
         if(userId < 0){ return ResponseUtil.unlogin(); }
         if(cartItem.getProductId() == null || cartItem.getNumber() == null){ return ResponseUtil.badArgument(); }
         if(cartItem.getUserId() != null && !userId.equals(cartItem.getUserId())){ return ResponseUtil.unauthz(); }
@@ -123,6 +111,8 @@ public class CartController {
      */
     @PutMapping("cartItems/{id}")
     public Object update(@PathVariable("id")Integer cartItemId, @RequestBody CartItem cartItem){
+        if(request.getHeader("id") == null)
+            return ResponseUtil.unlogin();
         Integer userId = Integer.valueOf(request.getHeader("id"));
         if(userId != cartItem.getUserId()){
             return ResponseUtil.unauthz();
@@ -146,6 +136,9 @@ public class CartController {
      */
     @DeleteMapping("cartItems/{id}")
     public Object delete(@PathVariable("id")Integer cartItemId){
+        if(request.getHeader("id") == null)
+            return ResponseUtil.unlogin();
+
         Integer userId = Integer.valueOf(request.getHeader("id"));
 
         CartItem cartItem = cartDao.getCartItemById(cartItemId);
@@ -170,6 +163,9 @@ public class CartController {
      */
     @DeleteMapping("cartItems")
     public Object clearCartItem(@RequestBody List<CartItem> cartItems){
+        if(request.getHeader("id") == null)
+            return ResponseUtil.unlogin();
+
         for (CartItem cartItem: cartItems){
             cartService.deleteCartItem(cartItem.getId());
         }
