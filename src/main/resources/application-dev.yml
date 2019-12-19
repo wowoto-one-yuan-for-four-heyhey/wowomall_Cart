@@ -6,6 +6,10 @@ spring:
     username: wowoto
     password: zqhlovekly
 
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: cartService
@@ -21,3 +25,7 @@ eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
       defaultZone: http://148.70.28.112:8761/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 172.20.10.2
+    non-secure-port: 30033

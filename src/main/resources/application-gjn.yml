@@ -22,3 +22,7 @@ eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
       defaultZone: http://47.96.159.71:8888/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 139.196.253.120
+    non-secure-port: 30020
