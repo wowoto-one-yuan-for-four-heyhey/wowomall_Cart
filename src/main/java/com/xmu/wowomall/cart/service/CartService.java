@@ -39,7 +39,7 @@ public interface CartService {
      * @param userId   用户ID
      * @return 订单列表
      */
-    public List<CartItem> getCartItemsByUserId(Integer userId);
+    List<CartItem> getCartItemsByUserId(Integer userId);
 
     /**
      * 修改购物车商品货品数量
@@ -47,7 +47,7 @@ public interface CartService {
      * @param cartItem cartItem
      * @return cartItem
      */
-    public CartItem updateCartItem(CartItem cartItem);
+    CartItem updateCartItem(CartItem cartItem);
 
     /**
      * 删除购物车商品
@@ -55,5 +55,5 @@ public interface CartService {
      * @param cartItemId
      * @return 订单列表
      */
-    public boolean deleteCartItem(Integer cartItemId);
+    Integer deleteCartItem(Integer cartItemId);
 }

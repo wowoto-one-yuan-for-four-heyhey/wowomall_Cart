@@ -54,9 +54,8 @@ public class CartDao {
         return cartItem;
     }
 
-    public CartItem addCartItem(CartItem cartItem){
-        cartMapper.addCartItem(cartItem);
-        return cartItem;
+    public Integer addCartItem(CartItem cartItem){
+        return cartMapper.addCartItem(cartItem);
     }
 
     /**
@@ -64,8 +63,8 @@ public class CartDao {
      * @param cartItem 购物车项
      * @return 订单列表
      */
-    public boolean updateCartItem(CartItem cartItem){
-        return cartMapper.updateCartItemById(cartItem) == 1;
+    public Integer updateCartItem(CartItem cartItem){
+        return cartMapper.updateCartItemById(cartItem);
     }
 
 
@@ -74,8 +73,8 @@ public class CartDao {
      * @param cartId 购物车id
      * @return 订单列表
      */
-    public boolean deleteCartItemById(Integer cartId){
-        return cartMapper.deleteCartItemById(cartId) == 1;
+    public Integer deleteCartItemById(Integer cartId){
+        return cartMapper.deleteCartItemById(cartId);
     }
 
 }

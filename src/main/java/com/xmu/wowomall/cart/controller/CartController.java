@@ -25,9 +25,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @Autowired
-    private CartDao cartDao;
-
     /**
      * 取得购物车中的一项
      *
@@ -36,7 +33,7 @@ public class CartController {
      */
     @GetMapping("cartItems/{id}")
     public Object findCartItemById(@PathVariable("id") Integer cartItemId) {
-        CartItem cartItem = cartDao.getCartItemById(cartItemId);
+        CartItem cartItem = cartService.getCartItemById(cartItemId);
         if(cartItem == null){return ResponseUtil.fail();}
         return ResponseUtil.ok(cartItem);
     }
@@ -64,7 +61,7 @@ public class CartController {
      * @return cartItem
      */
     @PostMapping("cartItems")
-    public Object add(@RequestBody CartItem cartItem) {
+    public Object addCartItem(@RequestBody CartItem cartItem) {
         if(request.getHeader("id") == null)
             return ResponseUtil.unlogin();
 
@@ -141,7 +138,7 @@ public class CartController {
 
         Integer userId = Integer.valueOf(request.getHeader("id"));
 
-        CartItem cartItem = cartDao.getCartItemById(cartItemId);
+        CartItem cartItem = cartService.getCartItemById(cartItemId);
 
         if(userId != cartItem.getUserId()){
             return ResponseUtil.unauthz();

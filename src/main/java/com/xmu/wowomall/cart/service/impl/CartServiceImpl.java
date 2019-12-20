@@ -81,7 +81,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public boolean deleteCartItem(Integer cartItemId){
+    public Integer deleteCartItem(Integer cartItemId){
         return cartDao.deleteCartItemById(cartItemId);
     }
 }
