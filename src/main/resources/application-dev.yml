@@ -27,5 +27,5 @@ eureka:
       defaultZone: http://148.70.28.112:8761/eureka
   instance:
     prefer-ip-address: true
-    ip-address: 139.196.253.120
+    ip-address: 192.168.43.56
     non-secure-port: 30033

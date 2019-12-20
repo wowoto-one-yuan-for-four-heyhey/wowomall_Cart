@@ -2,6 +2,7 @@ package com.xmu.wowomall.cart.dao;
 
 
 import com.xmu.wowomall.cart.domain.CartItem;
+import com.xmu.wowomall.cart.domain.po.CartItemPo;
 import com.xmu.wowomall.cart.mapper.CartMapper;
 import com.xmu.wowomall.cart.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,8 @@ public class CartDao {
         return cartItemList;
     }
 
-    public CartItem getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
-        CartItem cartItem = cartMapper.getCartItemByUserIdAndProductId(userId, productId);
-        if(cartItem != null) {
-            cartItem.setProduct(goodsService.getProductById(cartItem.getProductId()));
-        }
-        return cartItem;
+    public CartItemPo getCartItemsByUserIdAndProductId(Integer userId, Integer productId){
+        return cartMapper.getCartItemByUserIdAndProductId(userId, productId);
     }
 
     public CartItem getCartItemById(Integer cartId){
@@ -54,17 +51,21 @@ public class CartDao {
         return cartItem;
     }
 
-    public Integer addCartItem(CartItem cartItem){
-        return cartMapper.addCartItem(cartItem);
+    public CartItemPo getCartItemPoById(Integer cartId){
+        return cartMapper.getCartItemPoById(cartId);
+    }
+
+    public Integer addCartItem(CartItemPo cartItemPo){
+        return cartMapper.addCartItem(cartItemPo);
     }
 
     /**
      * 获取用户订单列表
-     * @param cartItem 购物车项
+     * @param cartItemPo 购物车项
      * @return 订单列表
      */
-    public Integer updateCartItem(CartItem cartItem){
-        return cartMapper.updateCartItemById(cartItem);
+    public Integer updateCartItem(CartItemPo cartItemPo){
+        return cartMapper.updateCartItemById(cartItemPo);
     }
 
 
