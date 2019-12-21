@@ -49,8 +49,6 @@ public class CartController {
             return ResponseUtil.unlogin();
         Integer userId = Integer.valueOf(request.getHeader("id"));
         List<CartItem> cartItems = cartService.getCartItemsByUserId(userId);
-        if(cartItems == null || cartItems.size() == 0)
-            return ResponseUtil.ok();
         return ResponseUtil.ok(cartItems);
     }
 
