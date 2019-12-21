@@ -56,7 +56,6 @@ public class CartDao {
     }
 
     public Integer addCartItem(CartItemPo cartItemPo){
-        cartItemPo.setBeCheck(false);
         return cartMapper.addCartItem(cartItemPo);
     }
 
