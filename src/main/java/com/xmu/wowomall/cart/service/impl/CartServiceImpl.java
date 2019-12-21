@@ -3,6 +3,7 @@ package com.xmu.wowomall.cart.service.impl;
 
 import com.xmu.wowomall.cart.dao.CartDao;
 import com.xmu.wowomall.cart.domain.CartItem;
+import com.xmu.wowomall.cart.domain.po.CartItemPo;
 import com.xmu.wowomall.cart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,15 +28,32 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public CartItem addCartItem(CartItem cartItem){
-        CartItem existCartItem = cartDao.getCartItemsByUserIdAndProductId(cartItem.getUserId(), cartItem.getProductId());
+    public CartItemPo getCartItemPoById(Integer id) {
+        return cartDao.getCartItemPoById(id);
+    }
+
+    @Override
+    public CartItemPo addCartItem(CartItemPo cartItemPo){
+        CartItemPo existCartItem = cartDao.getCartItemsByUserIdAndProductId(cartItemPo.getUserId(), cartItemPo.getProductId());
         if(null != existCartItem) {
-            existCartItem.setNumber(existCartItem.getNumber() + cartItem.getNumber());
+            existCartItem.setNumber(existCartItem.getNumber() + cartItemPo.getNumber());
             cartDao.updateCartItem(existCartItem);
             return existCartItem;
         }
-        cartDao.addCartItem(cartItem);
-        return cartItem;
+        cartDao.addCartItem(cartItemPo);
+        return cartItemPo;
+    }
+
+    @Override
+    public CartItemPo fastAddCartItem(CartItemPo cartItemPo){
+        CartItemPo existCartItem = cartDao.getCartItemsByUserIdAndProductId(cartItemPo.getUserId(), cartItemPo.getProductId());
+        if(null != existCartItem) {
+            existCartItem.setNumber(cartItemPo.getNumber());
+            cartDao.updateCartItem(existCartItem);
+            return existCartItem;
+        }
+        cartDao.addCartItem(cartItemPo);
+        return cartItemPo;
     }
 
     /**
@@ -59,17 +77,17 @@ public class CartServiceImpl implements CartService {
     /**
      * 获取用户订单列表
      *
-     * @param cartItem
+     * @param cartItemPo
      * @return 订单列表
      */
     @Override
-    public CartItem updateCartItem(CartItem cartItem){
-        cartDao.updateCartItem(cartItem);
-        return cartItem;
+    public CartItemPo updateCartItem(CartItemPo cartItemPo){
+        cartDao.updateCartItem(cartItemPo);
+        return cartItemPo;
     }
 
     @Override
-    public boolean deleteCartItem(Integer cartItemId){
+    public Integer deleteCartItem(Integer cartItemId){
         return cartDao.deleteCartItemById(cartItemId);
     }
 }

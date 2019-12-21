@@ -2,6 +2,7 @@ package com.xmu.wowomall.cart.mapper;
 
 
 import com.xmu.wowomall.cart.domain.CartItem;
+import com.xmu.wowomall.cart.domain.po.CartItemPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -26,13 +27,15 @@ public interface CartMapper {
 
     List<CartItem> getCartItemsByUserId(Integer userId);
 
-    CartItem getCartItemByUserIdAndProductId(Integer userId, Integer productId);
-
     CartItem getCartItemById(Integer cartId);
 
-    Integer updateCartItemById(CartItem cartItem);
+    CartItemPo getCartItemByUserIdAndProductId(Integer userId, Integer productId);
 
-    Integer addCartItem(CartItem cartItem);
+    CartItemPo getCartItemPoById(Integer cartId);
+
+    Integer updateCartItemById(CartItemPo cartItem);
+
+    Integer addCartItem(CartItemPo cartItem);
 
     Integer deleteCartItemById(Integer cartId);
 }

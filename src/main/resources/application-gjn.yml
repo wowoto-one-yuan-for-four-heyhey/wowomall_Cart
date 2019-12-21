@@ -2,17 +2,14 @@ server:
   port: 30033
 spring:
   datasource:
-    url: jdbc:mysql://148.70.28.112:3306/wowomall?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    username: wowoto
-    password: zqhlovekly
-
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
+    url: jdbc:mysql://47.96.159.71/oomall?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8&allowMultiQueries=true # 耿佳南
+    username: oomall
+    password: oomallp@$$w0rd
 
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: cartService
+
 
 mybatis:
   mapper-locations: classpath:cart.mapper/*Mapper.xml
@@ -24,8 +21,8 @@ mybatis:
 eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
-      defaultZone: http://47.96.159.71:8888/eureka/
+      defaultZone: http://47.96.159.71:8888/eureka
   instance:
     prefer-ip-address: true
-    ip-address: 192.168.43.56
-    non-secure-port: 30033
+    ip-address: 139.196.253.120
+    non-secure-port: 30020

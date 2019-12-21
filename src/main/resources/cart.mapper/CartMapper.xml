@@ -14,7 +14,7 @@
     where user_id = #{userId}
 </select>
 
-<select id="getCartItemByUserIdAndProductId" resultType="CartItem">
+<select id="getCartItemByUserIdAndProductId" resultType="CartItemPo">
     select id,
            user_id,
            product_id,
@@ -38,8 +38,19 @@
     where id = #{cartId}
 </select>
 
+<select id="getCartItemPoById" resultType="CartItemPo">
+    select id,
+           user_id,
+           product_id,
+           is_check as be_check,
+           number,
+           gmt_create,
+           gmt_modified
+    from oomall_cart_item
+    where id = #{cartId}
+</select>
 
-<update id="updateCartItemById" parameterType="CartItem">
+<update id="updateCartItemById" parameterType="CartItemPo">
     update oomall_cart_item
     <trim prefix="set" suffixOverrides=",">
         <if test="userId != null">user_id = #{userId},</if>
@@ -52,7 +63,7 @@
     WHERE id = #{id}
 </update>
 
-<insert id="addCartItem" parameterType="CartItem" useGeneratedKeys="true" keyProperty="id">
+<insert id="addCartItem" parameterType="CartItemPo" useGeneratedKeys="true" keyProperty="id">
     insert into oomall_cart_item(user_id, product_id, is_check, number, gmt_create, gmt_modified)
     values(#{userId}, #{productId}, #{beCheck}, #{number}, now(), now())
 </insert>

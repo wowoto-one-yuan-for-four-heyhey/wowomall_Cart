@@ -1,6 +1,5 @@
 package com.xmu.wowomall.cart.domain;
 
-import com.xmu.wowomall.cart.domain.po.GoodsPo;
 import com.xmu.wowomall.cart.domain.po.ProductPo;
 
 /**
@@ -9,14 +8,14 @@ import com.xmu.wowomall.cart.domain.po.ProductPo;
  * @Data:Created in 14:50 2019/12/11
  **/
 public class Product extends ProductPo {
-    private GoodsPo goodsPo;
+    private Goods goods;
 
-    public GoodsPo getGoodsPo() {
-        return this.goodsPo;
+    public Goods getGoods() {
+        return this.goods;
     }
 
-    public void setGoodsPo(GoodsPo goodsPo) {
-        this.goodsPo = goodsPo;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 
     public boolean equals(final Object o) {
@@ -25,8 +24,8 @@ public class Product extends ProductPo {
         final Product other = (Product) o;
         if (!other.canEqual((Object) this)) return false;
         if (!super.equals(o)) return false;
-        final Object this$goodsPo = this.getGoodsPo();
-        final Object other$goodsPo = other.getGoodsPo();
+        final Object this$goodsPo = this.getGoods();
+        final Object other$goodsPo = other.getGoods();
         if (this$goodsPo == null ? other$goodsPo != null : !this$goodsPo.equals(other$goodsPo)) return false;
         return true;
     }
@@ -38,12 +37,12 @@ public class Product extends ProductPo {
     public int hashCode() {
         final int PRIME = 59;
         int result = super.hashCode();
-        final Object $goodsPo = this.getGoodsPo();
+        final Object $goodsPo = this.getGoods();
         result = result * PRIME + ($goodsPo == null ? 43 : $goodsPo.hashCode());
         return result;
     }
 
     public String toString() {
-        return "Product(goodsPo=" + this.getGoodsPo() + ")";
+        return "Product(goodsPo=" + this.getGoods() + ")";
     }
 }

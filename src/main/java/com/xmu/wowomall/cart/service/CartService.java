@@ -1,5 +1,6 @@
 package com.xmu.wowomall.cart.service;
 import com.xmu.wowomall.cart.domain.CartItem;
+import com.xmu.wowomall.cart.domain.po.CartItemPo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +20,21 @@ public interface CartService {
      */
     CartItem getCartItemById(Integer id);
 
+    CartItemPo getCartItemPoById(Integer id);
+
     /**
      *  添加 商品到购物车 /add
-     *  @param cartItem 待添加的购物车项目
+     *  @param cartItemPo 待添加的购物车项目
      *  @return 添加成功与否
      */
-    CartItem addCartItem(CartItem cartItem);
+    CartItemPo addCartItem(CartItemPo cartItemPo);
+
+    /**
+     *  添加 商品到购物车 数量直接覆盖
+     *  @param cartItemPo 待添加的购物车项目
+     *  @return 添加成功与否
+     */
+    CartItemPo fastAddCartItem(CartItemPo cartItemPo);
 
     /**
      * 获取用户订单列表
@@ -32,15 +42,15 @@ public interface CartService {
      * @param userId   用户ID
      * @return 订单列表
      */
-    public List<CartItem> getCartItemsByUserId(Integer userId);
+    List<CartItem> getCartItemsByUserId(Integer userId);
 
     /**
      * 修改购物车商品货品数量
      *
-     * @param cartItem cartItem
+     * @param cartItemPo
      * @return cartItem
      */
-    public CartItem updateCartItem(CartItem cartItem);
+    CartItemPo updateCartItem(CartItemPo cartItemPo);
 
     /**
      * 删除购物车商品
@@ -48,5 +58,5 @@ public interface CartService {
      * @param cartItemId
      * @return 订单列表
      */
-    public boolean deleteCartItem(Integer cartItemId);
+    Integer deleteCartItem(Integer cartItemId);
 }
