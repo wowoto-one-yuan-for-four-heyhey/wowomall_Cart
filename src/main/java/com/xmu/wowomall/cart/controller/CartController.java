@@ -35,7 +35,6 @@ public class CartController {
     @GetMapping("cartItems/{id}")
     public Object findCartItemById(@PathVariable("id") Integer cartItemId) {
         CartItem cartItem = cartService.getCartItemById(cartItemId);
-        if(cartItem == null){return ResponseUtil.fail();}
         return ResponseUtil.ok(cartItem);
     }
 
