@@ -1,6 +1,6 @@
 package com.xmu.wowomall.cart.domain;
 
-import com.xmu.wowoto.wowomall.domain.po.CouponRulePo;
+import com.xmu.wowomall.cart.domain.po.CouponRulePo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.xmu.wowomall.cart.domain;
 
-import com.xmu.wowoto.wowomall.domain.po.DefaultPieceFreightPo;
+import com.xmu.wowomall.cart.domain.po.DefaultPieceFreightPo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

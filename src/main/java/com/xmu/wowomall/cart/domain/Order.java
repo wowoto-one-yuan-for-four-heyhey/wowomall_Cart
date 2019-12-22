@@ -1,7 +1,6 @@
 package com.xmu.wowomall.cart.domain;
 
 import com.xmu.wowomall.cart.domain.po.OrderPo;
-import
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -108,16 +107,7 @@ public class Order extends OrderPo {
         super();
     }
 
-    public Order(User user, Address address){
-        this.setUser(user);
-        this.setUserId(user.getId());
-        this.setAddressObj(address);
-        this.setAddressString(address);
-        this.setMobile(address.getMobile());
-        this.setConsignee(address.getConsignee());
-        this.setOrderSn("P" + Common.getRandomNum(1));
-        this.setStatusCode(StatusCode.NOT_PAYED.value);
-    }
+
 
     /**
      * 把addressObj存成address
