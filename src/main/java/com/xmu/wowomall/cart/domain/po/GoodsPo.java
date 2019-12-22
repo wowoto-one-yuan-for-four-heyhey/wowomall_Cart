@@ -1,10 +1,5 @@
 package com.xmu.wowomall.cart.domain.po;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -13,10 +8,6 @@ import java.time.LocalDateTime;
  * @Description:商品信息
  * @Data:Created in 14:50 2019/12/11
  **/
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
 public class GoodsPo {
 
     private Integer id;
@@ -96,4 +87,191 @@ public class GoodsPo {
     private LocalDateTime gmtCreate;
     private LocalDateTime gmtModified;
 
+    public Integer getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getGoodsSn() {
+        return this.goodsSn;
+    }
+
+    public String getShortName() {
+        return this.shortName;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public String getBrief() {
+        return this.brief;
+    }
+
+    public String getPicUrl() {
+        return this.picUrl;
+    }
+
+    public String getDetail() {
+        return this.detail;
+    }
+
+    public Integer getStatusCode() {
+        return this.statusCode;
+    }
+
+    public String getShareUrl() {
+        return this.shareUrl;
+    }
+
+    public String getGallery() {
+        return this.gallery;
+    }
+
+    public Integer getGoodsCategoryId() {
+        return this.goodsCategoryId;
+    }
+
+    public Integer getBrandId() {
+        return this.brandId;
+    }
+
+    public BigDecimal getWeight() {
+        return this.weight;
+    }
+
+    public String getVolume() {
+        return this.volume;
+    }
+
+    public Integer getSpecialFreightId() {
+        return this.specialFreightId;
+    }
+
+    public Boolean getBeSpecial() {
+        return this.beSpecial;
+    }
+
+    public BigDecimal getPrice() {
+        return this.price;
+    }
+
+    public Boolean getBeDeleted() {
+        return this.beDeleted;
+    }
+
+    public LocalDateTime getGmtCreate() {
+        return this.gmtCreate;
+    }
+
+    public LocalDateTime getGmtModified() {
+        return this.gmtModified;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGoodsSn(String goodsSn) {
+        this.goodsSn = goodsSn;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public void setStatusCode(Integer statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public void setShareUrl(String shareUrl) {
+        this.shareUrl = shareUrl;
+    }
+
+    public void setGallery(String gallery) {
+        this.gallery = gallery;
+    }
+
+    public void setGoodsCategoryId(Integer goodsCategoryId) {
+        this.goodsCategoryId = goodsCategoryId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public void setSpecialFreightId(Integer specialFreightId) {
+        this.specialFreightId = specialFreightId;
+    }
+
+    public void setBeSpecial(Boolean beSpecial) {
+        this.beSpecial = beSpecial;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setBeDeleted(Boolean beDeleted) {
+        this.beDeleted = beDeleted;
+    }
+
+    public void setGmtCreate(LocalDateTime gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    public void setGmtModified(LocalDateTime gmtModified) {
+        this.gmtModified = gmtModified;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        return true;
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof GoodsPo;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodsPo(id=" + this.getId() + ", name=" + this.getName() + ", goodsSn=" + this.getGoodsSn() + ", shortName=" + this.getShortName() + ", description=" + this.getDescription() + ", brief=" + this.getBrief() + ", picUrl=" + this.getPicUrl() + ", detail=" + this.getDetail() + ", statusCode=" + this.getStatusCode() + ", shareUrl=" + this.getShareUrl() + ", gallery=" + this.getGallery() + ", goodsCategoryId=" + this.getGoodsCategoryId() + ", brandId=" + this.getBrandId() + ", weight=" + this.getWeight() + ", volume=" + this.getVolume() + ", specialFreightId=" + this.getSpecialFreightId() + ", beSpecial=" + this.getBeSpecial() + ", price=" + this.getPrice() + ", beDeleted=" + this.getBeDeleted() + ", gmtCreate=" + this.getGmtCreate() + ", gmtModified=" + this.getGmtModified() + ")";
+    }
 }

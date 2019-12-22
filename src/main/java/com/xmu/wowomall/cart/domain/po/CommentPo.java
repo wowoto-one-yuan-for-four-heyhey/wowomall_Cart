@@ -106,40 +106,41 @@ public class CommentPo {
         this.beDeleted = beDeleted;
     }
 
+    @Override
     public boolean equals(final Object o) {
-        if (o == this) return true;
-        if (!(o instanceof CommentPo)) return false;
+        if (o == this) {return true;}
+        if (!(o instanceof CommentPo)) {return false;}
         final CommentPo other = (CommentPo) o;
-        if (!other.canEqual((Object) this)) return false;
-        final Object this$id = this.getId();
-        final Object other$id = other.getId();
-        if (this$id == null ? other$id != null : !this$id.equals(other$id)) return false;
-        final Object this$userId = this.getUserId();
-        final Object other$userId = other.getUserId();
-        if (this$userId == null ? other$userId != null : !this$userId.equals(other$userId)) return false;
-        final Object this$content = this.getContent();
-        final Object other$content = other.getContent();
-        if (this$content == null ? other$content != null : !this$content.equals(other$content)) return false;
-        final Object this$statusCode = this.getStatusCode();
-        final Object other$statusCode = other.getStatusCode();
-        if (this$statusCode == null ? other$statusCode != null : !this$statusCode.equals(other$statusCode))
-            return false;
-        final Object this$star = this.getStar();
-        final Object other$star = other.getStar();
-        if (this$star == null ? other$star != null : !this$star.equals(other$star)) return false;
-        final Object this$productId = this.getProductId();
-        final Object other$productId = other.getProductId();
-        if (this$productId == null ? other$productId != null : !this$productId.equals(other$productId)) return false;
-        final Object this$gmtCreate = this.getGmtCreate();
-        final Object other$gmtCreate = other.getGmtCreate();
-        if (this$gmtCreate == null ? other$gmtCreate != null : !this$gmtCreate.equals(other$gmtCreate)) return false;
-        final Object this$gmtModified = this.getGmtModified();
-        final Object other$gmtModified = other.getGmtModified();
-        if (this$gmtModified == null ? other$gmtModified != null : !this$gmtModified.equals(other$gmtModified))
-            return false;
-        final Object this$beDeleted = this.getBeDeleted();
-        final Object other$beDeleted = other.getBeDeleted();
-        if (this$beDeleted == null ? other$beDeleted != null : !this$beDeleted.equals(other$beDeleted)) return false;
+        if (!other.canEqual((Object) this)) {return false;}
+        final Object thisId = this.getId();
+        final Object otherId = other.getId();
+        if (thisId == null ? otherId != null : !thisId.equals(otherId)) {return false;}
+        final Object thisUserId = this.getUserId();
+        final Object otherUserId = other.getUserId();
+        if (thisUserId == null ? otherUserId != null : !thisUserId.equals(otherUserId)) {return false;}
+        final Object thisContent = this.getContent();
+        final Object otherContent = other.getContent();
+        if (thisContent == null ? otherContent != null : !thisContent.equals(otherContent)){ return false;}
+        final Object thisStatusCode = this.getStatusCode();
+        final Object otherStatusCode = other.getStatusCode();
+        if (thisStatusCode == null ? otherStatusCode != null : !thisStatusCode.equals(otherStatusCode))
+        {    return false;}
+        final Object thisStar = this.getStar();
+        final Object otherStar = other.getStar();
+        if (thisStar == null ? otherStar != null : !thisStar.equals( otherStar)) {return false;}
+        final Object thisProductId = this.getProductId();
+        final Object otherProductId = other.getProductId();
+        if (thisProductId == null ? otherProductId != null : !thisProductId.equals(otherProductId)) {return false;}
+        final Object thisGmtCreate = this.getGmtCreate();
+        final Object otherGmtCreate = other.getGmtCreate();
+        if (thisGmtCreate == null ? otherGmtCreate != null : !thisGmtCreate.equals(otherGmtCreate)) {return false;}
+        final Object thisGmtModified = this.getGmtModified();
+        final Object otherGmtModified = other.getGmtModified();
+        if (thisGmtModified == null ? otherGmtModified != null : !thisGmtModified.equals(otherGmtModified))
+        {    return false;}
+        final Object thisBeDeleted = this.getBeDeleted();
+        final Object otherBeDeleted = other.getBeDeleted();
+        if (thisBeDeleted == null ? otherBeDeleted != null : !thisBeDeleted.equals(otherBeDeleted)) {return false;}
         return true;
     }
 
@@ -147,30 +148,31 @@ public class CommentPo {
         return other instanceof CommentPo;
     }
 
+    @Override
     public int hashCode() {
-        final int PRIME = 59;
+        final int prime = 59;
         int result = 1;
-        final Object $id = this.getId();
-        result = result * PRIME + ($id == null ? 43 : $id.hashCode());
-        final Object $userId = this.getUserId();
-        result = result * PRIME + ($userId == null ? 43 : $userId.hashCode());
-        final Object $content = this.getContent();
-        result = result * PRIME + ($content == null ? 43 : $content.hashCode());
-        final Object $statusCode = this.getStatusCode();
-        result = result * PRIME + ($statusCode == null ? 43 : $statusCode.hashCode());
-        final Object $star = this.getStar();
-        result = result * PRIME + ($star == null ? 43 : $star.hashCode());
-        final Object $productId = this.getProductId();
-        result = result * PRIME + ($productId == null ? 43 : $productId.hashCode());
-        final Object $gmtCreate = this.getGmtCreate();
-        result = result * PRIME + ($gmtCreate == null ? 43 : $gmtCreate.hashCode());
-        final Object $gmtModified = this.getGmtModified();
-        result = result * PRIME + ($gmtModified == null ? 43 : $gmtModified.hashCode());
-        final Object $beDeleted = this.getBeDeleted();
-        result = result * PRIME + ($beDeleted == null ? 43 : $beDeleted.hashCode());
+        final Object id = this.getId();
+        result = result * prime + (id == null ? 43 : id.hashCode());
+        final Object userId = this.getUserId();
+        result = result * prime + (userId == null ? 43 : userId.hashCode());
+        final Object content = this.getContent();
+        result = result * prime + (content == null ? 43 : content.hashCode());
+        final Object statusCode = this.getStatusCode();
+        result = result * prime + (statusCode == null ? 43 : statusCode.hashCode());
+        final Object star = this.getStar();
+        result = result * prime + (star == null ? 43 : star.hashCode());
+        final Object productId = this.getProductId();
+        result = result * prime + (productId == null ? 43 : productId.hashCode());
+        final Object gmtCreate = this.getGmtCreate();
+        result = result * prime + (gmtCreate == null ? 43 : gmtCreate.hashCode());
+        final Object gmtModified = this.getGmtModified();
+        result = result * prime + (gmtModified == null ? 43 : gmtModified.hashCode());
+        final Object beDeleted = this.getBeDeleted();
+        result = result * prime + (beDeleted == null ? 43 : beDeleted.hashCode());
         return result;
     }
-
+    @Override
     public String toString() {
         return "CommentPo(id=" + this.getId() + ", userId=" + this.getUserId() + ", content=" + this.getContent() + ", statusCode=" + this.getStatusCode() + ", star=" + this.getStar() + ", productId=" + this.getProductId() + ", gmtCreate=" + this.getGmtCreate() + ", gmtModified=" + this.getGmtModified() + ", beDeleted=" + this.getBeDeleted() + ")";
     }

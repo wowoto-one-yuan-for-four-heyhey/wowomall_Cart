@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Service
 @FeignClient("goodsInfoService")
 public interface RemoteGoodsService {
+    /**
+     *  555
+     * @param productId
+     * @return
+     */
     @GetMapping("products/{id}")
     String getProductById(@PathVariable("id") Integer productId);
 }

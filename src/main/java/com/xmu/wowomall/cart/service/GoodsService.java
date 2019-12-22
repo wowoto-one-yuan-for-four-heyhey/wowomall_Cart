@@ -11,5 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public interface GoodsService {
 
+    /**
+     *  555
+     * @param productId
+     * @return
+     */
     Product getProductById(Integer productId);
 }

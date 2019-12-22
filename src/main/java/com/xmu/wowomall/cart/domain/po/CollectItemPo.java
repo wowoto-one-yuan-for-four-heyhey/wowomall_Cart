@@ -61,27 +61,28 @@ public class CollectItemPo {
         this.gmtModified = gmtModified;
     }
 
+    @Override
     public boolean equals(final Object o) {
-        if (o == this) return true;
-        if (!(o instanceof CollectItemPo)) return false;
+        if (o == this) {return true;}
+        if (!(o instanceof CollectItemPo)) {return false;}
         final CollectItemPo other = (CollectItemPo) o;
-        if (!other.canEqual((Object) this)) return false;
-        final Object this$id = this.getId();
-        final Object other$id = other.getId();
-        if (this$id == null ? other$id != null : !this$id.equals(other$id)) return false;
-        final Object this$goodsId = this.getGoodsId();
-        final Object other$goodsId = other.getGoodsId();
-        if (this$goodsId == null ? other$goodsId != null : !this$goodsId.equals(other$goodsId)) return false;
-        final Object this$userId = this.getUserId();
-        final Object other$userId = other.getUserId();
-        if (this$userId == null ? other$userId != null : !this$userId.equals(other$userId)) return false;
-        final Object this$gmtCreate = this.getGmtCreate();
-        final Object other$gmtCreate = other.getGmtCreate();
-        if (this$gmtCreate == null ? other$gmtCreate != null : !this$gmtCreate.equals(other$gmtCreate)) return false;
-        final Object this$gmtModified = this.getGmtModified();
-        final Object other$gmtModified = other.getGmtModified();
-        if (this$gmtModified == null ? other$gmtModified != null : !this$gmtModified.equals(other$gmtModified))
-            return false;
+        if (!other.canEqual((Object) this)) {return false;}
+        final Object thisid = this.getId();
+        final Object otherid = other.getId();
+        if (thisid == null ? otherid != null : !thisid.equals(otherid)){ return false;}
+        final Object thisgoodsId = this.getGoodsId();
+        final Object othergoodsId = other.getGoodsId();
+        if (thisgoodsId == null ? othergoodsId != null : !thisgoodsId.equals(othergoodsId)){ return false;}
+        final Object thisuserId = this.getUserId();
+        final Object otheruserId = other.getUserId();
+        if (thisuserId == null ? otheruserId != null : !thisuserId.equals(otheruserId)){ return false;}
+        final Object thisgmtCreate = this.getGmtCreate();
+        final Object othergmtCreate = other.getGmtCreate();
+        if (thisgmtCreate == null ? othergmtCreate != null : !thisgmtCreate.equals(othergmtCreate)) {return false;}
+        final Object thisgmtModified = this.getGmtModified();
+        final Object othergmtModified = other.getGmtModified();
+        if (thisgmtModified == null ? othergmtModified != null : !thisgmtModified.equals(othergmtModified))
+        { return false;}
         return true;
     }
 
@@ -89,22 +90,24 @@ public class CollectItemPo {
         return other instanceof CollectItemPo;
     }
 
+    @Override
     public int hashCode() {
-        final int PRIME = 59;
+        final int prime = 59;
         int result = 1;
-        final Object $id = this.getId();
-        result = result * PRIME + ($id == null ? 43 : $id.hashCode());
-        final Object $goodsId = this.getGoodsId();
-        result = result * PRIME + ($goodsId == null ? 43 : $goodsId.hashCode());
-        final Object $userId = this.getUserId();
-        result = result * PRIME + ($userId == null ? 43 : $userId.hashCode());
-        final Object $gmtCreate = this.getGmtCreate();
-        result = result * PRIME + ($gmtCreate == null ? 43 : $gmtCreate.hashCode());
-        final Object $gmtModified = this.getGmtModified();
-        result = result * PRIME + ($gmtModified == null ? 43 : $gmtModified.hashCode());
+        final Object id = this.getId();
+        result = result * prime + (id == null ? 43 : id.hashCode());
+        final Object goodsId = this.getGoodsId();
+        result = result * prime + (goodsId == null ? 43 : goodsId.hashCode());
+        final Object userId = this.getUserId();
+        result = result * prime + (userId == null ? 43 : userId.hashCode());
+        final Object gmtCreate = this.getGmtCreate();
+        result = result * prime + (gmtCreate == null ? 43 : gmtCreate.hashCode());
+        final Object gmtModified = this.getGmtModified();
+        result = result * prime + (gmtModified == null ? 43 : gmtModified.hashCode());
         return result;
     }
 
+    @Override
     public String toString() {
         return "CollectItemPo(id=" + this.getId() + ", goodsId=" + this.getGoodsId() + ", userId=" + this.getUserId() + ", gmtCreate=" + this.getGmtCreate() + ", gmtModified=" + this.getGmtModified() + ")";
     }

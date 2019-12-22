@@ -19,30 +19,31 @@ public class CartItem extends CartItemPo {
         this.product = product;
     }
 
+    @Override
     public boolean equals(final Object o) {
-        if (o == this) return true;
-        if (!(o instanceof CartItem)) return false;
+        if (o == this){ return true;}
+        if (!(o instanceof CartItem)){ return false;}
         final CartItem other = (CartItem) o;
-        if (!other.canEqual((Object) this)) return false;
-        if (!super.equals(o)) return false;
-        final Object this$product = this.getProduct();
-        final Object other$product = other.getProduct();
-        if (this$product == null ? other$product != null : !this$product.equals(other$product)) return false;
+        if (!other.canEqual((Object) this)){ return false;}
+        if (!super.equals(o)) {return false;}
+        final Object thisProduct = this.getProduct();
+        final Object otherProduct = other.getProduct();
+        if (thisProduct == null ? otherProduct != null : !thisProduct.equals(otherProduct)) {return false;}
         return true;
     }
 
+    @Override
     protected boolean canEqual(final Object other) {
         return other instanceof CartItem;
     }
 
+    @Override
     public int hashCode() {
-        final int PRIME = 59;
-        int result = super.hashCode();
-        final Object $product = this.getProduct();
-        result = result * PRIME + ($product == null ? 43 : $product.hashCode());
-        return result;
+
+        return 0;
     }
 
+    @Override
     public String toString() {
         return "CartItem(product=" + this.getProduct() + ")";
     }

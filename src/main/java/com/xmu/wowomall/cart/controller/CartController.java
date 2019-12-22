@@ -16,6 +16,9 @@ import java.util.List;
 
 @Api(value="carts",tags = "购物车")
 @RestController
+/**
+ * @author 55
+ */
 public class CartController {
 
     private static final Logger logger = LoggerFactory.getLogger(CartController.class);
@@ -45,8 +48,10 @@ public class CartController {
     @GetMapping("cartItems")
     public Object getCartItems()
     {
-        if(request.getHeader("id") == null)
+        String id= request.getHeader("id");
+        if(id == null) {
             return ResponseUtil.unlogin();
+        }
         Integer userId = Integer.valueOf(request.getHeader("id"));
         List<CartItem> cartItems = cartService.getCartItemsByUserId(userId);
         return ResponseUtil.ok(cartItems);
@@ -62,8 +67,11 @@ public class CartController {
      */
     @PostMapping("cartItems")
     public Object addCartItem(@RequestBody CartItemPo cartItemPo) {
-        if(request.getHeader("id") == null)
+
+        String id= request.getHeader("id");
+        if(id == null) {
             return ResponseUtil.unlogin();
+        }
 
         Integer userId = Integer.valueOf(request.getHeader("id"));
 
@@ -83,8 +91,10 @@ public class CartController {
      */
     @PostMapping("fastAddCartItems")
     public Object fastAdd(@RequestBody CartItemPo cartItemPo) {
-        if(request.getHeader("id") == null)
+        String id= request.getHeader("id");
+        if(id == null) {
             return ResponseUtil.unlogin();
+        }
 
         Integer userId = Integer.valueOf(request.getHeader("id"));
 
@@ -104,8 +114,10 @@ public class CartController {
      */
     @PutMapping("cartItems/{id}")
     public Object update(@PathVariable("id")Integer cartItemId, @RequestBody CartItemPo cartItemPo){
-        if(request.getHeader("id") == null)
+        String id= request.getHeader("id");
+        if(id == null) {
             return ResponseUtil.unlogin();
+        }
         Integer userId = Integer.valueOf(request.getHeader("id"));
 
         if(cartItemPo.getProductId() == null || cartItemPo.getNumber() == null){ return ResponseUtil.badArgument(); }
@@ -124,17 +136,19 @@ public class CartController {
      */
     @DeleteMapping("cartItems/{id}")
     public Object delete(@PathVariable("id")Integer cartItemId){
-        if(request.getHeader("id") == null)
+        String id= request.getHeader("id");
+        if(id == null) {
             return ResponseUtil.unlogin();
+        }
 
         Integer userId = Integer.valueOf(request.getHeader("id"));
 
         CartItem cartItem = cartService.getCartItemById(cartItemId);
 
-        if(userId != cartItem.getUserId()){
+        if(!userId .equals(cartItem.getUserId())){
             return ResponseUtil.unauthz();
         }
-        if(cartItemId != cartItem.getId()){
+        if(!cartItemId .equals(cartItem.getId())){
             return ResponseUtil.badArgument();
         }
 

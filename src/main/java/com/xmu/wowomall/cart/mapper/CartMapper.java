@@ -18,24 +18,54 @@ import java.util.List;
 @Mapper
 public interface CartMapper {
 
+
     /**
-     * 根据订单查询信息返回订单对象
-
-
-     * @return 订单
+     * 根据userID拿到User
+     * @param userId
+     * @return
      */
-
     List<CartItem> getCartItemsByUserId(Integer userId);
 
+    /**
+     * 根据id拿到cartItem
+     * @param cartId
+     * @return
+     */
     CartItem getCartItemById(Integer cartId);
 
+    /**
+     * 555
+     * @param userId
+     * @param productId
+     * @return
+     */
     CartItemPo getCartItemByUserIdAndProductId(Integer userId, Integer productId);
 
+    /**
+     *
+     * @param cartId
+     * @return
+     */
     CartItemPo getCartItemPoById(Integer cartId);
 
+    /**
+     * 555
+     * @param cartItem
+     * @return
+     */
     Integer updateCartItemById(CartItemPo cartItem);
 
+    /**
+     * 555
+     * @param cartItem
+     * @return
+     */
     Integer addCartItem(CartItemPo cartItem);
 
+    /**
+     *  555
+     * @param cartId
+     * @return
+     */
     Integer deleteCartItemById(Integer cartId);
 }

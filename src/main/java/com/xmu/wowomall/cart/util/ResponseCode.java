@@ -1,6 +1,12 @@
 package com.xmu.wowomall.cart.util;
 
+/**
+ * @author wowoto
+ */
 public enum ResponseCode {
+    /**
+     * gf
+     */
     AUTH_INVALID_ACCOUNT(700, ""),
 
     ORDER_UNKNOWN(720, "订单不存在"),
