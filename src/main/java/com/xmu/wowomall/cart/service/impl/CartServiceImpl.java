@@ -40,7 +40,6 @@ public class CartServiceImpl implements CartService {
             cartDao.updateCartItem(existCartItem);
             return existCartItem;
         }
-        cartItemPo.setBeCheck(false);
         cartDao.addCartItem(cartItemPo);
         return cartItemPo;
     }
